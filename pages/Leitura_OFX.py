@@ -64,6 +64,7 @@ if uploaded_files:
                 "Data": transaction.date.strftime('%d/%m/%Y'),
                 "Descrição": transaction.memo,
                 "Valor": transaction.amount,
+                "TRNTYPE": transaction.type,
                 "Tipo": "Crédito" if transaction.type.upper() == "CREDIT" else "Débito"
             })
 
