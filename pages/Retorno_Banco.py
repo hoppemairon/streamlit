@@ -78,4 +78,4 @@ if st.session_state.df_ret is not None:
     if st.button("🧹 Limpar Tela"):
         st.session_state.df_ret = None
         st.session_state.uploader_key_ret += 1  # força reset do uploader
-        st.rerun()      
+        st.rerun()

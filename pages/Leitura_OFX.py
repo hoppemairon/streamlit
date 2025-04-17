@@ -19,20 +19,26 @@ def convert_to_utf8(file_bytes, file_name):
     result = chardet.detect(file_bytes)
     encoding = result['encoding']
 
-    if encoding and encoding.lower() != 'utf-8':
-        st.session_state.mensagens.append(f"🔄 Arquivo **{file_name}** convertido de `{encoding}` para UTF-8.")
-        try:
-            data = file_bytes.decode(encoding)
-        except UnicodeDecodeError:
-            for enc in ['latin1', 'iso-8859-1', 'windows-1252']:
-                try:
-                    data = file_bytes.decode(enc)
-                    st.session_state.mensagens.append(f"✔️ Decodificado com sucesso com `{enc}`.")
-                    break
-                except UnicodeDecodeError:
-                    continue
-        return data.encode('utf-8')
-    return file_bytes
+    if encoding:
+        if encoding.lower() == 'utf-8':
+            st.session_state.mensagens.append(f"✅ Arquivo **{file_name}** já está em UTF-8.")
+            return file_bytes
+        else:
+            st.session_state.mensagens.append(f"🔄 Arquivo **{file_name}** será convertido de `{encoding}` para UTF-8.")
+            try:
+                data = file_bytes.decode(encoding)
+            except UnicodeDecodeError:
+                for enc in ['latin1', 'iso-8859-1', 'windows-1252']:
+                    try:
+                        data = file_bytes.decode(enc)
+                        st.session_state.mensagens.append(f"✔️ Decodificado com sucesso com `{enc}`.")
+                        break
+                    except UnicodeDecodeError:
+                        continue
+            return data.encode('utf-8')
+
+    st.session_state.mensagens.append(f"⚠️ Não foi possível detectar a codificação do arquivo **{file_name}**.")
+    return file_byte
 
 # uploader com chave dinâmica
 uploaded_files = st.file_uploader(
