@@ -94,4 +94,4 @@ if st.session_state.df_ofx is not None:
         st.session_state.df_ofx = None
         st.session_state.mensagens = []
         st.session_state.uploader_key += 1  # muda a chave = reinicia uploader
-        st.experimental_rerun()
+        st.rerun()
