@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import io
 
-st.set_page_config(page_title="Leitor CNAB240 .RET", layout="centered")
+st.set_page_config(page_title="Leitor CNAB240 .RET", layout="wide")
 st.title("📄 Leitor de Arquivo CNAB240 (.RET)")
 
 st.markdown("Faça o upload de um arquivo `.RET` (CNAB240) para extrair os dados de **pagamentos (Segmento J)** e gerar um arquivo Excel.")

@@ -1,0 +1,1 @@
+# Este arquivo torna a pasta logic um pacote Python

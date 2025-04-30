@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-st.set_page_config(page_title="Início - Projeto Bancário", layout="centered")
+st.set_page_config(page_title="Projeto Bancário", layout="centered")
 
 st.title("🏠 Página Inicial")
 st.markdown("""
@@ -12,3 +12,5 @@ Selecione uma das páginas no menu lateral:
 - 📄 **Retorno Bancário**: Para processar arquivos `.RET` CNAB240
 - 💸 **Leitura de Arquivos OFX**: Para extrair e corrigir lançamentos OFX
 """)
+
+

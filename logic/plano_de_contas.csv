@@ -1,0 +1,44 @@
+Grupo,Categoria,Tipo,Considerar,Ordem
+Receita,Receita de Vendas,Crédito,sim,1.1
+Receita,Receita de Serviços,Crédito,sim,1.2
+Receita,Juros Recebidos,Crédito,sim,1.3
+Receita,Outros Recebimentos,Crédito,sim,1.4
+Receita,Transferência entre contas,Crédito,não,1.5
+Despesas Operacionais,Despesas com Fornecedores,Débito,sim,2.1
+Despesas Operacionais,Outras Desp. Operacionais,Débito,sim,2.2
+Despesas RH,Folha de Pagamento,Débito,sim,3.1
+Despesas RH,FGTS,Débito,sim,3.2
+Despesas RH,INSS,Débito,sim,3.3
+Despesas RH,VA,Débito,sim,3.4
+Despesas RH,VT,Débito,sim,3.5
+Despesas Impostos,Impostos e Encargos,Débito,sim,4.1
+Despesas Administrativas,Aluguel,Débito,sim,5.1
+Despesas Administrativas,Telefone / Internet,Débito,sim,5.2
+Despesas Administrativas,Energia Elétrica / Agua,Débito,sim,5.3
+Despesas Administrativas,Marketing e Publicidade,Débito,sim,5.4
+Despesas Administrativas,Despesas com Viagens,Débito,sim,5.5
+Despesas Administrativas,Despesas com TI,Débito,sim,5.6
+Investimentos / Aplicações,Aplicações Financeiras,Débito,não,6.1
+Investimentos / Aplicações,Resgates,Débito,não,6.2
+Investimentos / Aplicações,Compra de Equipamentos,Débito,sim,6.3
+Investimentos / Aplicações,Compra de Imobilizado,Débito,sim,6.4
+Extra Operacional,Juros e Encargos Bancários,Débito,sim,7.1
+Extra Operacional,IOF,Débito,sim,7.2
+Extra Operacional,Multas / Encargos,Débito,sim,7.3
+Extra Operacional,Tarifas Bancárias,Débito,sim,7.4
+Extra Operacional,Empréstimos,Débito,sim,7.5
+Extra Operacional,Seguro,Débito,sim,7.6
+Extra Operacional,Cartão de Crédito,Débito,sim,7.7
+Extra Operacional,Estornos / Ajustes,Débito,sim,7.8
+Extra Operacional,Sem Identificação,Débito,sim,7.9
+Extra Operacional,Transferência entre contas,Débito,não,7.1
+Retiradas,Sócios,Débito,sim,8.1
+Saldos,Saldo Inicial,Crédito,não,9.1
+Saldos,Saldo Parcial,Crédito,não,9.2
+Saldos,Saldo Final,Crédito,não,9.3
+Saldos,Saldo Inicial,Débito,não,9.4
+Saldos,Saldo Parcial,Débito,não,9.5
+Saldos,Saldo Final,Débito,não,9.6
+Despesas Administrativas,Sindicato,Débito,Sim,5.7
+Despesas Administrativas,Consultoria,Débito,Sim,5.8
+Despesas Administrativas,Outras Desp. Adm,Débito,Sim,5.9

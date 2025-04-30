@@ -1,0 +1,1 @@
+# Este arquivo torna a pasta extractors um pacote Python

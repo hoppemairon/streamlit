@@ -1,0 +1,18 @@
+PalavraChave,Tipo,Categoria
+PIX,Crédito,Receita de Vendas
+DEP DINHEIRO,Crédito,Receita de Vendas
+LIQUIDACAO DE COBRANCA,Crédito,Receita de Vendas
+SICREDI CREDITO AMEX,Crédito,Receita de Vendas
+SICREDI CREDITO ELO,Crédito,Receita de Vendas
+SICREDI CREDITO MASTER,Crédito,Receita de Vendas
+SICREDI CREDITO VISA,Crédito,Receita de Vendas
+SICREDI DEBITO ELO,Crédito,Receita de Vendas
+SICREDI DEBITO MASTER,Crédito,Receita de Vendas
+SICREDI DEBITO VISA,Crédito,Receita de Vendas
+BX.ANT.FINANC/EMP,Débito,Empréstimos
+TV POR ASSINATURA OI,Débito,Telefone / Internet
+LAGOA PARQUE HOTEL,Débito,Transferência entre contas
+TARIFA,Débito,Tarifas Bancárias
+TAR COMANDADA COBRANCA,Débito,Tarifas Bancárias
+DISFONTE,Débito,Despesas com Fornecedores
+POLLETTO,Débito,Despesas com Fornecedores
