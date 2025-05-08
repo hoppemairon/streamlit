@@ -137,8 +137,12 @@ if st.session_state['df_argo'] is not None and st.session_state['df_netunna'] is
                                              value=f"R$ {valor_total_netunna:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
                                     
                                     with st.expander("Detalhes Netunna"):
-                                        st.dataframe(vendas_netunna_data[['venda.nsu', 'venda.venda_data', 'venda.valor_bruto', 'venda.bandeira']].reset_index(drop=True), 
-                                                   use_container_width=True)
+                                        st.dataframe(
+                                            vendas_netunna_data[['venda.nsu', 'venda.venda_data', 'venda.valor_bruto', 'venda.bandeira']].rename(
+                                                columns={'venda.bandeira': 'id_bandeira'}
+                                            ).reset_index(drop=True),
+                                            use_container_width=True
+    )
 
                                 # Exibir comparativo
                                 st.subheader('🔍 Comparativo das Datas Selecionadas')
@@ -207,7 +211,6 @@ if 'comparativo' in st.session_state and st.session_state['comparativo'] is not 
                     - Valor: `R$ {row['valor_netunna']:,.2f}`
                     - NSU: `{row['nsu_netunna']}`
                     - Bandeira: `{row.get('bandeira_netunna', 'N/A')}`
-                    - Adquirente: `{row.get('operadora_netunna', 'N/A')}`
                     """)
 
                 decisao = st.radio(

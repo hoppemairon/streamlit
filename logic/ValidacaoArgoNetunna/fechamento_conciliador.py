@@ -90,7 +90,7 @@ def marcar_dia_como_fechado(id_empresa, dia):
     if not os.path.exists(caminho):
         return
 
-    df = pd.read_cs_
+    df = pd.read_csv
 
 def carregar_fechamentos(id_empresa):
     caminho = f"Fechamentos/fechamentos_empresa_{id_empresa}.csv"
