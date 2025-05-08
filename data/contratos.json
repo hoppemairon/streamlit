@@ -1,0 +1,11 @@
+{
+  "Contrato 1": {
+    "data_contrato": "2025-05-04",
+    "data_primeira_parcela": "2025-05-04",
+    "valor_contratado": 150000.0,
+    "taxa_juros": 1.6,
+    "prazo_meses": 24,
+    "tipo_contrato": "PRICE",
+    "pagamentos": []
+  }
+}

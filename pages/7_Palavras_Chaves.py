@@ -5,8 +5,8 @@ import os
 def exibir_pagina():
     st.title("🔑 Palavras-Chave para Categorização Automática")
 
-    caminho_palavras = "./logic/palavras_chave.csv"
-    caminho_plano = "./logic/plano_de_contas.csv"
+    caminho_palavras = "./logic/CSVs/palavras_chave.csv"
+    caminho_plano = "./logic/CSVs/plano_de_contas.csv"
 
     # Carrega o plano de contas
     if os.path.exists(caminho_plano):

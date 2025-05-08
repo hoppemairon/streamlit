@@ -1,7 +1,7 @@
 import os
 import pandas as pd
-from logic import comparador_argo_netunna as comparador
-from logic import mapeador_empresas as mapeador
+from logic.ValidacaoArgoNetunna import comparador_argo_netunna as comparador
+from logic.ValidacaoArgoNetunna import mapeador_empresas as mapeador
 
 def executar_pipeline_completa(pasta_argo, pasta_netunna):
     empresas_argo = mapeador.carregar_empresas_argo()

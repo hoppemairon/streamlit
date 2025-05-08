@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import json
 import os
-from logic import mapeador_operadoras as mapeador_op
+from logic.ValidacaoArgoNetunna import mapeador_operadoras as mapeador_op
 
 st.set_page_config(page_title="Mapeamento de Formas de Pagamento", layout="wide")
 st.title('🔹 Mapeamento de Formas de Pagamento ARGO para Netunna')

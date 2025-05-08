@@ -4,7 +4,7 @@ import os
 
 def exibir_pagina():
     st.title("📘 Plano de Contas Padrão")
-    caminho = "./logic/plano_de_contas.csv"
+    caminho = "./logic/CSVs/plano_de_contas.csv"
 
     if os.path.exists(caminho):
         df = pd.read_csv(caminho)

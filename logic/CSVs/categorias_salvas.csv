@@ -489,3 +489,76 @@ TRANSF ENTRE CONTAS-SI00055   00175905070 CARLANA SARTORI CASARIN,Débito,Sem Id
 TRANSF ENTRE CONTAS-SI00064   00175905070 CARLANA SARTORI CASARIN,Débito,Sem Identificação
 TV POR ASSINATURA OI TV-00000037602677,Débito,Telefone / Internet
 TV POR ASSINATURA OI TV-00000037604072,Débito,Telefone / Internet
+PIX TRANSF  BANCO I28 12,Crédito,Receita de Vendas
+PIX TRANSF  GO SHOP20 12,Crédito,Receita de Vendas
+PIX TRANSF  JM CAMP03 12,Crédito,Receita de Vendas
+PIX TRANSF  JM CAMP12 11,Crédito,Receita de Vendas
+PIX TRANSF  JM CAMP12 12,Crédito,Receita de Vendas
+PIX TRANSF  JM CAMP13 11,Crédito,Receita de Vendas
+PIX TRANSF  JOSE MA01 11,Crédito,Receita de Vendas
+PIX TRANSF  LUX HOU12 11,Crédito,Receita de Vendas
+CEI     000043 DINHEIRO,Crédito,Receita de Vendas
+CEI     000044 DINHEIRO,Crédito,Receita de Vendas
+CEI     000045 DINHEIRO,Crédito,Receita de Vendas
+CEI     000046 DINHEIRO,Crédito,Receita de Vendas
+CREDIARIO ITAU    008,Crédito,Receita de Vendas
+CREDIARIO ITAU    109,Crédito,Outros Recebimentos
+CREDITO CARTAO,Crédito,Receita de Vendas
+CXE     000045 DEPOSITO,Crédito,Receita de Vendas
+ELECTRONIFOOD   NIC EST,Crédito,Receita de Vendas
+PIX TRANSF  ANTONIO29 03,Crédito,Receita de Vendas
+PIX TRANSF  CNP CON14 09,Crédito,Receita de Vendas
+PIX TRANSF  CNP CON18 09,Crédito,Receita de Vendas
+PIX TRANSF  ENRICO 05 04,Crédito,Receita de Vendas
+PIX TRANSF  ENRICO 15 10,Crédito,Receita de Vendas
+PIX TRANSF  FIGUEIR03 05,Crédito,Receita de Vendas
+PIX TRANSF  FIGUEIR05 04,Crédito,Receita de Vendas
+PIX TRANSF  FIGUEIR06 03,Crédito,Receita de Vendas
+PIX TRANSF  FIGUEIR22 12,Crédito,Receita de Vendas
+PIX TRANSF  JM CAMP05 07,Crédito,Receita de Vendas
+PIX TRANSF  JM CAMP16 09,Crédito,Receita de Vendas
+PIX TRANSF  JM CAMP28 07,Crédito,Receita de Vendas
+PIX TRANSF  JM CAMP28 10,Crédito,Receita de Vendas
+PIX TRANSF  JM CAMP29 07,Crédito,Receita de Vendas
+PIX TRANSF  JOAO BA09 05,Crédito,Receita de Vendas
+PIX TRANSF  JOAO BA14 08,Crédito,Receita de Vendas
+PIX TRANSF  JOAO BA29 03,Crédito,Receita de Vendas
+PIX TRANSF  JOAO BA31 01,Crédito,Receita de Vendas
+PIX TRANSF  JOSE MA06 09,Crédito,Receita de Vendas
+PIX TRANSF  JOSE MA11 05,Crédito,Receita de Vendas
+PIX TRANSF  JOSE MA11 06,Crédito,Receita de Vendas
+PIX TRANSF  JOSE MA13 05,Crédito,Receita de Vendas
+PIX TRANSF  JOSE MA28 10,Crédito,Receita de Vendas
+PIX TRANSF  KARIM Y08 09,Crédito,Receita de Vendas
+PIX TRANSF  KARIM Y09 10,Crédito,Receita de Vendas
+PIX TRANSF  KARIM Y12 11,Crédito,Receita de Vendas
+PIX TRANSF  KARIM Y13 11,Crédito,Receita de Vendas
+PIX TRANSF  KARIM Y13 12,Crédito,Receita de Vendas
+PIX TRANSF  KARIM Y14 05,Crédito,Receita de Vendas
+PIX TRANSF  KARIM Y16 10,Crédito,Receita de Vendas
+PIX TRANSF  KARIM Y17 04,Crédito,Receita de Vendas
+PIX TRANSF  KARIM Y18 06,Crédito,Receita de Vendas
+PIX TRANSF  KARIM Y18 09,Crédito,Receita de Vendas
+PIX TRANSF  KARIM Y28 03,Crédito,Receita de Vendas
+PIX TRANSF  LUX HOU30 10,Crédito,Receita de Vendas
+PIX TRANSF  MARIA E11 12,Crédito,Receita de Vendas
+PIX TRANSF  MAURO L17 06,Crédito,Receita de Vendas
+PIX TRANSF Alcir B11 01,Crédito,Receita de Vendas
+PIX TRANSF Alcir B20 01,Crédito,Receita de Vendas
+PIX TRANSF Antonio05 03,Crédito,Receita de Vendas
+PIX TRANSF FIGUEIR05 01,Crédito,Receita de Vendas
+PIX TRANSF FIGUEIR06 02,Crédito,Receita de Vendas
+PIX TRANSF JOAO BA09 01,Crédito,Receita de Vendas
+PIX TRANSF KARIM Y09 01,Crédito,Receita de Vendas
+PIX TRANSF KARIM Y14 03,Crédito,Receita de Vendas
+PIX TRANSF KARIM Y19 02,Crédito,Receita de Vendas
+PIX TRANSF KARIM Y23 01,Crédito,Receita de Vendas
+PIX TRANSF LUIZ FE01 06,Crédito,Receita de Vendas
+PIX TRANSF Ricardo02 02,Crédito,Receita de Vendas
+PIX TRANSF Ricardo12 02,Crédito,Receita de Vendas
+SISPAG PIX  MONDADORI FA,Crédito,Receita de Vendas
+SISPAG PIX MAR DE JURERE TUR,Crédito,Receita de Vendas
+SISPAG PIX MONDADORI FARIAS,Crédito,Receita de Vendas
+TBI 4100 21228 3,Crédito,Receita de Vendas
+TED 237 2502 JM C T D L,Crédito,Receita de Vendas
+TED 237 3245 JOSE M C,Crédito,Receita de Vendas
