@@ -176,6 +176,15 @@ def comparar_vendas(df_argo, df_netunna):
     df_netunna_prep = df_netunna_prep.drop(list(idxs_netunna_usados))
 
     # -------------------------------------------
+    # Garante que todos os DataFrames tenham as colunas finais
+    colunas_finais = ['datahora', 'nsu_argo', 'valor_argo', 'formapagamento_argo', 
+                      'nsu_netunna', 'valor_netunna', 'bandeira_netunna', 'operadora_netunna', 'status']
+    for df in [df_batido, df_argo_prep, df_netunna_prep]:
+        for col in colunas_finais:
+            if col not in df.columns:
+                df[col] = pd.Series(dtype='object')
+
+    # -------------------------------------------
     # Unir todos os resultados
     # -------------------------------------------
     resultado = pd.concat([
@@ -185,7 +194,7 @@ def comparar_vendas(df_argo, df_netunna):
         df_netunna_prep[['datahora', 'nsu_netunna', 'valor_netunna', 'bandeira_netunna', 'operadora_netunna', 'status']]
     ], ignore_index=True)
 
-    # Garantir colunas
+    # Garantir colunas (caso ainda falte)
     for col in ['nsu_argo', 'valor_argo', 'formapagamento_argo', 'nsu_netunna', 'valor_netunna', 'bandeira_netunna', 'operadora_netunna']:
         if col not in resultado.columns:
             resultado[col] = np.nan

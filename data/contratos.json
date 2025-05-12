@@ -7,5 +7,14 @@
     "prazo_meses": 24,
     "tipo_contrato": "PRICE",
     "pagamentos": []
+  },
+  "495067007": {
+    "data_contrato": "2025-05-09",
+    "data_primeira_parcela": "2025-05-09",
+    "valor_contratado": 35000.0,
+    "taxa_juros": 1.5,
+    "prazo_meses": 1,
+    "tipo_contrato": "PRICE",
+    "pagamentos": []
   }
 }

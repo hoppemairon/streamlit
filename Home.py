@@ -1,6 +1,8 @@
 
 import streamlit as st
 
+
+
 st.set_page_config(page_title="Projeto Bancário", layout="centered")
 
 st.title("🏠 Página Inicial")

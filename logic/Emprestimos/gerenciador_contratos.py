@@ -5,7 +5,7 @@ import os
 import logging
 from typing import Dict, List, Optional
 
-from logic.contratos_emprestimos import ContratoEmprestimo, calcular_taxa_equivalente, obter_taxa_mercado
+from logic.Emprestimos.contratos_emprestimos import ContratoEmprestimo, calcular_taxa_equivalente, obter_taxa_mercado
 
 # Configuração de logging
 logging.basicConfig(level=logging.INFO)

@@ -28,10 +28,8 @@ DEBITO CARTAO DE CREDITO,Débito,Outras Desp. Operacionais
 DEBITO CONVENIOS,Débito,Energia Elétrica
 DEBITO TITULOS AUTOMATICO,Débito,Tarifas Bancárias
 FIANCA FIN  01-,Débito,Sem Identificação
-IOF,Débito,IOF
 IOF ADICIONAL,Débito,IOF
 JUROS,Débito,Juros e Encargos Bancários
-JUROS LIMITE DA CONTA,Débito,Juros e Encargos Bancários
 LIQUIDACAO BOLETO,Débito,Outras Desp. Operacionais
 LIQUIDACAO BOLETO SICREDI,Débito,Outras Desp. Operacionais
 PAGAMENTO DARF,Débito,Impostos e Encargos
@@ -206,7 +204,6 @@ DEBITO CONVENIOS-CORSAN-CA 92802784000190 CORSAN-CA,Débito,Energia Elétrica / 
 DEBITO CONVENIOS-OI TV - G 05423963000111 OI TV - G,Débito,Telefone / Internet
 DEBITO CONVENIOS-PMLAGVERM 87613626000151 PMLAGVERM,Débito,Sem Identificação
 DEBITO CONVENIOS-SEG_ICATU ID 930142949137 SEG VIDA / PRESTAMISTA - ICATU SEG 42283770000139,Débito,Seguro
-DOC/TED INTERNET TED INTERNET,Débito,Tarifas Bancárias
 LIQUIDACAO BOLETO SICREDI-224173408 92170307000159 DISFONTE,Débito,Despesas com Fornecedores
 LIQUIDACAO BOLETO SICREDI-224216018 92170307000159 DISFONTE,Débito,Despesas com Fornecedores
 LIQUIDACAO BOLETO SICREDI-224231246 92170307000159 DISFONTE,Débito,Despesas com Fornecedores
@@ -472,7 +469,6 @@ PAGAMENTO PIX-PIX_DEB   94995859000121 LABORATORIO NICOLODI LTDA ME,Débito,Sem 
 PARCELA OPERACAO CREDITO,Débito,Empréstimos
 TAR COMANDADA COBRANCA ALTERACAO VENCIMENTO TIT00000001,Débito,Tarifas Bancárias
 TAR COMANDADA COBRANCA BX TIT PELO BENEFICIARIO00000001,Débito,Tarifas Bancárias
-TARIFA BANCARIA CestaEmpresarial2,Débito,Tarifas Bancárias
 TARIFA REGISTRO COBRANCA QUANDO DO REGISTRO      00000001,Débito,Tarifas Bancárias
 TARIFA REGISTRO COBRANCA QUANDO DO REGISTRO      00000002,Débito,Tarifas Bancárias
 TARIFA REGISTRO COBRANCA QUANDO DO REGISTRO      00000003,Débito,Tarifas Bancárias
@@ -489,33 +485,41 @@ TRANSF ENTRE CONTAS-SI00055   00175905070 CARLANA SARTORI CASARIN,Débito,Sem Id
 TRANSF ENTRE CONTAS-SI00064   00175905070 CARLANA SARTORI CASARIN,Débito,Sem Identificação
 TV POR ASSINATURA OI TV-00000037602677,Débito,Telefone / Internet
 TV POR ASSINATURA OI TV-00000037604072,Débito,Telefone / Internet
-PIX TRANSF  BANCO I28 12,Crédito,Receita de Vendas
-PIX TRANSF  GO SHOP20 12,Crédito,Receita de Vendas
-PIX TRANSF  JM CAMP03 12,Crédito,Receita de Vendas
-PIX TRANSF  JM CAMP12 11,Crédito,Receita de Vendas
-PIX TRANSF  JM CAMP12 12,Crédito,Receita de Vendas
-PIX TRANSF  JM CAMP13 11,Crédito,Receita de Vendas
-PIX TRANSF  JOSE MA01 11,Crédito,Receita de Vendas
-PIX TRANSF  LUX HOU12 11,Crédito,Receita de Vendas
 CEI     000043 DINHEIRO,Crédito,Receita de Vendas
 CEI     000044 DINHEIRO,Crédito,Receita de Vendas
 CEI     000045 DINHEIRO,Crédito,Receita de Vendas
 CEI     000046 DINHEIRO,Crédito,Receita de Vendas
+CIELO VDA CREDITO ELO CIELO SA,Crédito,Sem Identificação
+CIELO VDA CREDITO MASTER CIELO SA,Crédito,Sem Identificação
 CREDIARIO ITAU    008,Crédito,Receita de Vendas
 CREDIARIO ITAU    109,Crédito,Outros Recebimentos
 CREDITO CARTAO,Crédito,Receita de Vendas
 CXE     000045 DEPOSITO,Crédito,Receita de Vendas
 ELECTRONIFOOD   NIC EST,Crédito,Receita de Vendas
+ESTORNO DE LANCAMENTO*,Crédito,Sem Identificação
+ESTORNO TARIFAS CestaEmpresarial2,Crédito,Sem Identificação
+ESTORNO TARIFAS MANUT CARTAO DEBITO,Crédito,Sem Identificação
+Emprest Pessoal,Crédito,Sem Identificação
+OPERACAO CAPITAL GIRO,Crédito,Sem Identificação
+PIX QR CODE ESTATIC REM: ODALEA MARIA BRUGGEMA 01/03,Crédito,Receita de Vendas
 PIX TRANSF  ANTONIO29 03,Crédito,Receita de Vendas
+PIX TRANSF  BANCO I20 01,Crédito,Receita de Vendas
+PIX TRANSF  BANCO I28 12,Crédito,Receita de Vendas
 PIX TRANSF  CNP CON14 09,Crédito,Receita de Vendas
 PIX TRANSF  CNP CON18 09,Crédito,Receita de Vendas
+PIX TRANSF  DEMERGE26 01,Crédito,Receita de Vendas
 PIX TRANSF  ENRICO 05 04,Crédito,Receita de Vendas
 PIX TRANSF  ENRICO 15 10,Crédito,Receita de Vendas
 PIX TRANSF  FIGUEIR03 05,Crédito,Receita de Vendas
 PIX TRANSF  FIGUEIR05 04,Crédito,Receita de Vendas
 PIX TRANSF  FIGUEIR06 03,Crédito,Receita de Vendas
 PIX TRANSF  FIGUEIR22 12,Crédito,Receita de Vendas
+PIX TRANSF  GO SHOP20 12,Crédito,Receita de Vendas
+PIX TRANSF  JM CAMP03 12,Crédito,Receita de Vendas
 PIX TRANSF  JM CAMP05 07,Crédito,Receita de Vendas
+PIX TRANSF  JM CAMP12 11,Crédito,Receita de Vendas
+PIX TRANSF  JM CAMP12 12,Crédito,Receita de Vendas
+PIX TRANSF  JM CAMP13 11,Crédito,Receita de Vendas
 PIX TRANSF  JM CAMP16 09,Crédito,Receita de Vendas
 PIX TRANSF  JM CAMP28 07,Crédito,Receita de Vendas
 PIX TRANSF  JM CAMP28 10,Crédito,Receita de Vendas
@@ -524,6 +528,7 @@ PIX TRANSF  JOAO BA09 05,Crédito,Receita de Vendas
 PIX TRANSF  JOAO BA14 08,Crédito,Receita de Vendas
 PIX TRANSF  JOAO BA29 03,Crédito,Receita de Vendas
 PIX TRANSF  JOAO BA31 01,Crédito,Receita de Vendas
+PIX TRANSF  JOSE MA01 11,Crédito,Receita de Vendas
 PIX TRANSF  JOSE MA06 09,Crédito,Receita de Vendas
 PIX TRANSF  JOSE MA11 05,Crédito,Receita de Vendas
 PIX TRANSF  JOSE MA11 06,Crédito,Receita de Vendas
@@ -540,6 +545,8 @@ PIX TRANSF  KARIM Y17 04,Crédito,Receita de Vendas
 PIX TRANSF  KARIM Y18 06,Crédito,Receita de Vendas
 PIX TRANSF  KARIM Y18 09,Crédito,Receita de Vendas
 PIX TRANSF  KARIM Y28 03,Crédito,Receita de Vendas
+PIX TRANSF  KARIM Y29 03,Crédito,Receita de Vendas
+PIX TRANSF  LUX HOU12 11,Crédito,Receita de Vendas
 PIX TRANSF  LUX HOU30 10,Crédito,Receita de Vendas
 PIX TRANSF  MARIA E11 12,Crédito,Receita de Vendas
 PIX TRANSF  MAURO L17 06,Crédito,Receita de Vendas
@@ -554,11 +561,732 @@ PIX TRANSF KARIM Y14 03,Crédito,Receita de Vendas
 PIX TRANSF KARIM Y19 02,Crédito,Receita de Vendas
 PIX TRANSF KARIM Y23 01,Crédito,Receita de Vendas
 PIX TRANSF LUIZ FE01 06,Crédito,Receita de Vendas
+PIX TRANSF LUX HOU06 01,Crédito,Receita de Vendas
 PIX TRANSF Ricardo02 02,Crédito,Receita de Vendas
 PIX TRANSF Ricardo12 02,Crédito,Receita de Vendas
+RESGATE INVEST FACIL,Crédito,Transferência entre contas
+Receb Pagfor Bradesco Vida e Previdencia sa,Crédito,Outros Recebimentos
+Resgate Inv Fac,Crédito,Transferência entre contas
 SISPAG PIX  MONDADORI FA,Crédito,Receita de Vendas
 SISPAG PIX MAR DE JURERE TUR,Crédito,Receita de Vendas
 SISPAG PIX MONDADORI FARIAS,Crédito,Receita de Vendas
 TBI 4100 21228 3,Crédito,Receita de Vendas
+TED 237 1327 ESPORTE C B,Crédito,Sem Identificação
 TED 237 2502 JM C T D L,Crédito,Receita de Vendas
 TED 237 3245 JOSE M C,Crédito,Receita de Vendas
+TED-TRANSF ELET DISPON REMET.AVAI FUTEBOL CLUBE,Crédito,Sem Identificação
+TED-TRANSF ELET DISPON REMET.GPBR PARTICIPACOES L,Crédito,Sem Identificação
+TED-TRANSF ELET DISPON REMET.JOSE MARIO CAMPEIZ,Crédito,Sem Identificação
+TED-TRANSF ELET DISPON REMET.SERGIO LUIZ FLACH,Crédito,Sem Identificação
+TED-TRANSF ELET DISPON REMET.SILVIA CASTRO FLACH,Crédito,Sem Identificação
+TRANSF AUTORIZ ENTRE AGS Jose Mario Campeiz,Crédito,Sem Identificação
+TRANSFERENCIA PIX REM: 48.898.006 S NOVELLI  03/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: 48.898.006 S NOVELLI  05/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ADRIAO RIBEIRO BARBOS 04/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ADRIAO RIBEIRO BARBOS 28/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ALAN MATOS DE SOUZA   06/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ALAN MATOS DE SOUZA   08/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ALBERTO STOPPE JUNIOR 09/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ALBERTO STOPPE JUNIOR 12/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: AMAURI GERASSI        04/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: AMAURI GERASSI        07/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: AMAURI GERASSI        08/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: AMAURI GERASSI        12/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ANDREA DE MORAES HENN 05/09,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ANDREA DE MORAES HENN 05/10,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ANDREA DE MORAES HENN 07/11,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ANDREA DE MORAES HENN 09/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ANDREA DE MORAES HENN 10/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ANGELITA V V HELAYEL  07/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ANGELITA V V HELAYEL  11/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ANGELITA V V HELAYEL  11/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Agatha Cristye Olinge 15/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: BEATRIZ S CORNELIUS   20/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: BRUNO FABIANO ALVES   10/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CASSIANA VANESSA KERB 23/08,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CELSO C CAITETE       03/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CELSO C CAITETE       03/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CIANDRA 00679426957   07/11,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CIANDRA 00679426957   13/12,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CLARISSA PERES SANCHE 06/09,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CLAUDIO JOSE FRANCHIN 05/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CLAUDIO JOSE FRANCHIN 06/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CLAUDIO JOSE FRANCHIN 08/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CLAUDIO JOSE FRANCHIN 08/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CLEUSA PERIN ACEVEDO  05/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CLEUSA PERIN ACEVEDO  16/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CRISTIANA NOGUEIRA DO 01/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CRISTIANA NOGUEIRA DO 01/11,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CRISTIANA NOGUEIRA DO 01/12,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CRISTIANA NOGUEIRA DO 02/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CRISTIANA NOGUEIRA DO 04/10,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: CRISTIANA NOGUEIRA DO 05/09,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Cesar Adil Couto de O 04/10,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Cesar Adil Couto de O 18/08,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Ciandra De Matos      04/10,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Claudia Plaszewski No 01/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Claudia Plaszewski No 09/09,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Claudia Plaszewski No 10/10,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Claudia Plaszewski No 12/11,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Claudia Plaszewski No 13/12,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: DAIANE LAUX CONTE     10/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: DAIANE LAUX CONTE     10/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: DANIELA MORATTO ROCCO 07/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: DANIELA MORATTO ROCCO 08/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: DANIELA MORATTO ROCCO 11/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: DANIELA MORATTO ROCCO 25/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: DULCE MARIA HOLANDA M 03/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: DULCE MARIA HOLANDA M 03/11,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: DULCE MARIA HOLANDA M 05/09,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: DULCE MARIA HOLANDA M 08/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: DULCE MARIA HOLANDA M 08/12,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: DULCE MARIA HOLANDA M 27/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FABIANA RAABE MULLER  30/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FABIO RIBEIRO DE ABRE 03/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FABIO RIBEIRO DE ABRE 03/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FABIO RIBEIRO DE ABRE 03/11,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FABIO RIBEIRO DE ABRE 04/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FABIO RIBEIRO DE ABRE 05/09,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FABIO RIBEIRO DE ABRE 06/10,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FABIO RIBEIRO DE ABRE 06/12,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FABIO RIBEIRO DE ABRE 08/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FABIO RIBEIRO DE ABRE 09/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FABRICIO SILVA GRANJA 02/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FABRICIO SILVA GRANJA 08/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FABRICIO SILVA GRANJA 20/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FELIPE GUIMARAES MALT 05/10,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FELIPE GUIMARAES MALT 13/10,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FELIPE GUIMARAES MALT 25/08,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FERNANDO SERGIO MAIA  05/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FERNANDO SERGIO MAIA  30/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FREDERICO GENDRA RIBE 28/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: FRONT ROW BRASIL EVEN 18/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: IVAN BEDNARSKI DE SOU 05/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: IVAN BEDNARSKI DE SOU 06/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: IVAN BEDNARSKI DE SOU 15/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: JOSE MARIO CAMPEIZ    03/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: JOSE MARIO CAMPEIZ    28/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: KARIM YAZAN NASSIF CO 23/08,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Karine Balaian Goldbe 20/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Karine Oliveira e Sil 02/11,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Karine Oliveira e Sil 06/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Karine Oliveira e Sil 09/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Karine Oliveira e Sil 11/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Karine Oliveira e Sil 12/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Karine Oliveira e Sil 18/08,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Karine Oliveira e Sil 21/12,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Karine Oliveira e Sil 27/09,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: LEONARDO MEDRADO BRIT 11/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: LEONARDO MEDRADO BRIT 13/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: LUIZ ALMIR CUNHA      01/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: LUIZ ALMIR CUNHA      01/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: LUIZ ALMIR CUNHA      04/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: LUIZ ALMIR CUNHA      29/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: LUIZ FERNANDO F PACHE 20/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: LUIZ FERNANDO F PACHE 24/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: LUIZ FERNANDO F PACHE 25/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Leila Coelho Borges   08/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARCEL CARDOSO JACQUE 09/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARCEL CARDOSO JACQUE 12/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARCEL CARDOSO JACQUE 17/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARCEL CARDOSO JACQUE 20/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARCEL CARDOSO JACQUE 21/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARCOS GARBELLOTTO SI 10/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARCOS GARBELLOTTO SI 15/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARCOS GARBELLOTTO SI 27/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARIA CRISTINA SILVA  04/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARIA CRISTINA SILVA  04/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARILIA BUCHMANN      12/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARISTELA INEZ TONIET 05/12,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARISTELA INEZ TONIET 08/10,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARISTELA INEZ TONIET 14/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARISTELA INEZ TONIET 14/12,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARISTELA INEZ TONIET 15/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MARISTELA INEZ TONIET 16/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MAURO LUIZ SILVA MATT 02/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MICHEL ALBERTO SILVES 05/10,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MICHEL ALBERTO SILVES 07/11,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MIGUEL CICERO TERRA L 20/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MIRANDA AGUERO IRIGOY 13/10,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: MIRANDA AGUERO IRIGOY 14/09,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Marcelo Natale Junkes 04/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: NILTON RIBERA PEREZ   14/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ODALEA MARIA BRUGGEMA 02/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ODALEA MARIA BRUGGEMA 03/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ODALEA MARIA BRUGGEMA 07/11,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ODALEA MARIA BRUGGEMA 12/12,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ODALEA MARIA BRUGGEMA 14/10,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: PABLO DE SA RIBEIRO   31/10,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: PAULA CRISTINA WALTRI 16/08,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: PAULA CRISTINA WALTRI 19/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: PEDRO CONTE NETO      01/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: PEDRO CONTE NETO      07/12,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: PEDRO CONTE NETO      10/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: RENATO LUCIO PRADO    04/10,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: RENATO LUCIO PRADO    05/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: RENATO LUCIO PRADO    06/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: RENATO LUCIO PRADO    06/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: RENATO LUCIO PRADO    07/11,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: RENATO LUCIO PRADO    07/12,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: RENATO LUCIO PRADO    08/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: RENATO LUCIO PRADO    09/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: RENATO LUCIO PRADO    25/08,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ROBERTA BANDEIRA M V  02/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ROBERTA BANDEIRA M V  02/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ROBERTA BANDEIRA M V  03/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: ROBERTA BANDEIRA M V  19/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: SANDRA DANIELA SILVA  03/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: SANDRA DANIELA SILVA  04/10,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: SANDRA DANIELA SILVA  06/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: SANDRA DANIELA SILVA  06/12,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: SANDRA DANIELA SILVA  07/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: SANDRA DANIELA SILVA  08/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: SANDRA DANIELA SILVA  11/11,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: SANDRA DANIELA SILVA  17/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: SILVIA CASTRO FLACH   04/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: SILVIA CASTRO FLACH   08/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: SILVIA CASTRO FLACH   08/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: SIMONE DEBATIN        06/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: SIMONE DEBATIN        06/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: SIMONE DEBATIN        06/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Sergio Figueiredo Ber 05/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: Sergio Figueiredo Ber 24/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: TASSIA SILVA LIMA     03/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: TASSIA SILVA LIMA     09/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: VALMOR ULISSES SCOLAR 02/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: VERA B SILVA OLIVEIRA 22/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: VERA REGINA M VILELA  01/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: VERA REGINA M VILELA  03/04,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: VERA REGINA M VILELA  08/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: VERDES CAMPOS COMERCI 11/05,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: WALDYR ZILLI          05/03,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: WALDYR ZILLI          17/02,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REM: WALDYR ZILLI          24/01,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: ADRIANA GIORDANI,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: AMAURI GERASSI,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: ANDREA DE MORAES HENNEMANN,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: ANDRESSA CRISTINA CABRAL C,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: BRUNO FABIANO ALVES,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: CINE CAFE FLORIPA LTDA,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: CLARISSA ARCA CARVALHO,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: CLARISSA PERES SANCHEZ,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: CRISTIANA NOGUEIRA DOS SAN,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: Claudia Plaszewski Novelli,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: DULCE MARIA HOLANDA MACIE,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: FABIO RIBEIRO DE ABREU,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: FABIOLA FAUSTINO SIGISMOND,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: FELIPE GUIMARAES MALTA,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: FERNANDO SERGIO MAIA REBEL,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: IVONE TARINI,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: JEANE JULIANO MOURA,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: JULIO ALBERTO GOMES FAIAD,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: KARIM YAZAN NASSIF COSTA,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: Karine Oliveira e Silva,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: LEILA SCHEER,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: LH REPRESENTACOES LTDA,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: MICHEL ALBERTO SILVESTRI,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: MIRANDA AGUERO IRIGOYEN,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: Mar al Geraldo Garay Bresc,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: Marinice Pederiva Scolari,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: ODALEA MARIA BRUGGEMANN,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: PABLO DE SA RIBEIRO,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: PAULO EUGENIO SOUZA PORTES,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: ROBERTA BANDEIRA M V C MAT,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: ROBSON ABDALLA,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: SERGIO LUIZ BRANT DE CARVA,Crédito,Receita de Vendas
+TRANSFERENCIA PIX REMT: SILVIA CASTRO FLACH,Crédito,Receita de Vendas
+Ted-t Elet Disp Remet.jm Campeiz Treinamen,Crédito,Sem Identificação
+Transf Contas jm Campeiz Treinamento Desportiv,Crédito,Sem Identificação
+Transfe Pix Rem: Edvania Conceicao Fer 06/05,Crédito,Receita de Vendas
+Transfe Pix Rem: Jose Mario Campeiz 07/11,Crédito,Receita de Vendas
+Transfe Pix Rem: Jose Mario Campeiz 13/05,Crédito,Receita de Vendas
+Transfe Pix Rem: Jose Mario Campeiz 27/02,Crédito,Receita de Vendas
+Transfe Pix Rem: Jose Mario Campeiz 29/11,Crédito,Receita de Vendas
+Transfe Pix Rem: Jose Mario Campeiz 30/01,Crédito,Receita de Vendas
+Transfe Pix Rem: Paloma a g 0455256292 03/02,Crédito,Receita de Vendas
+Transfe Pix Rem: Remessa Online 01/10,Crédito,Receita de Vendas
+Transfe Pix Rem: jm Campeiz Treinament 15/08,Crédito,Receita de Vendas
+Transferencia Pix Rem: Jose Mario Campeiz 30/04,Crédito,Receita de Vendas
+VENDA CARTAO DE CREDITO,Crédito,Receita de Vendas
+01  IOF CAMBIO,Débito,Sem Identificação
+01 FIN VENDA  2025317563,Débito,Sem Identificação
+01 FIN VENDA  2025441032,Débito,Sem Identificação
+01 FIN VENDA  2025495650,Débito,Sem Identificação
+APLIC.INVEST FACIL,Débito,Transferência entre contas
+Apl.invest Fac,Débito,Transferência entre contas
+BX.ANT.FINANC/EMP AMORTIZ. SALDO - CONTR 015719111,Débito,Empréstimos
+Bx.ant.fin/emp Amortiz. Saldo - Contr 493477356,Débito,Sem Identificação
+CARTAO CREDITO ANUIDADE,Débito,Sem Identificação
+CARTAO PERSONNALITE,Débito,Sem Identificação
+CEI     000045 EST,Débito,Sem Identificação
+CONTA DE TELEFONE INTERNET --TELEFONICA BRASIL S/,Débito,Sem Identificação
+CONTA DE TELEFONE INTERNET --TIM S.A.,Débito,Sem Identificação
+CREDIARIO AUTOM   01 60,Débito,Empréstimos
+CREDIARIO AUTOM   01 72,Débito,Empréstimos
+CREDIARIO AUTOM   02 60,Débito,Empréstimos
+CREDIARIO AUTOM   02 72,Débito,Empréstimos
+CREDIARIO AUTOM   03 36,Débito,Empréstimos
+CREDIARIO AUTOM   03 60,Débito,Empréstimos
+CREDIARIO AUTOM   03 72,Débito,Empréstimos
+CREDIARIO AUTOM   04 36,Débito,Empréstimos
+CREDIARIO AUTOM   04 60,Débito,Empréstimos
+CREDIARIO AUTOM   04 72,Débito,Empréstimos
+CREDIARIO AUTOM   05 36,Débito,Empréstimos
+CREDIARIO AUTOM   05 60,Débito,Empréstimos
+CREDIARIO AUTOM   05 72,Débito,Empréstimos
+CREDIARIO AUTOM   06 36,Débito,Empréstimos
+CREDIARIO AUTOM   06 60,Débito,Empréstimos
+CREDIARIO AUTOM   06 72,Débito,Empréstimos
+CREDIARIO AUTOM   07 36,Débito,Empréstimos
+CREDIARIO AUTOM   07 60,Débito,Empréstimos
+CREDIARIO AUTOM   07 72,Débito,Empréstimos
+CREDIARIO AUTOM   08 36,Débito,Empréstimos
+CREDIARIO AUTOM   08 60,Débito,Empréstimos
+CREDIARIO AUTOM   08 72,Débito,Empréstimos
+CREDIARIO AUTOM   09 36,Débito,Empréstimos
+CREDIARIO AUTOM   09 60,Débito,Empréstimos
+CREDIARIO AUTOM   09 72,Débito,Empréstimos
+CREDIARIO AUTOM   10 36,Débito,Empréstimos
+CREDIARIO AUTOM   10 60,Débito,Empréstimos
+CREDIARIO AUTOM   10 72,Débito,Empréstimos
+CREDIARIO AUTOM   11 60,Débito,Empréstimos
+CREDIARIO AUTOM   11 72,Débito,Empréstimos
+CREDIARIO AUTOM   12 60,Débito,Empréstimos
+CREDIARIO AUTOM   12 72,Débito,Empréstimos
+CREDIARIO AUTOM   13 60,Débito,Empréstimos
+CREDIARIO AUTOM   13 72,Débito,Empréstimos
+CREDIARIO AUTOM   14 60,Débito,Empréstimos
+CREDIARIO AUTOM   14 72,Débito,Empréstimos
+CREDIARIO AUTOM   15 60,Débito,Empréstimos
+CREDIARIO AUTOM   15 72,Débito,Empréstimos
+CREDIARIO AUTOM   16 60,Débito,Empréstimos
+CREDIARIO AUTOM   17 60,Débito,Empréstimos
+CREDIARIO AUTOM   17 72,Débito,Empréstimos
+CREDIARIO AUTOM   18 60,Débito,Empréstimos
+CREDIARIO AUTOM   19 72,Débito,Empréstimos
+CREDIARIO AUTOM   20 72,Débito,Empréstimos
+CREDIARIO AUTOM   21 60,Débito,Empréstimos
+CREDIARIO AUTOM   23 60,Débito,Empréstimos
+CREDIARIO AUTOM   24 60,Débito,Empréstimos
+CREDIARIO AUTOM 04 60,Débito,Empréstimos
+CREDIARIO AUTOM 05 60,Débito,Empréstimos
+CREDIARIO AUTOM 07 60,Débito,Empréstimos
+CREDIARIO AUTOM 11 72,Débito,Empréstimos
+CREDIARIO AUTOM 12 72,Débito,Empréstimos
+CREDIARIO AUTOM 13 60,Débito,Empréstimos
+CREDIARIO AUTOM 14 60,Débito,Empréstimos
+CREDIARIO AUTOM 14 72,Débito,Empréstimos
+CREDIARIO AUTOM 15 72,Débito,Empréstimos
+CREDIARIO AUTOM 16 60,Débito,Empréstimos
+CREDIARIO AUTOM 16 72,Débito,Empréstimos
+CREDIARIO AUTOM 18 72,Débito,Empréstimos
+CREDIARIO AUTOM 19 60,Débito,Empréstimos
+CREDIARIO AUTOM 20 60,Débito,Empréstimos
+CREDIARIO AUTOM 22 60,Débito,Empréstimos
+Conta Luz Celesc Distrib./sc-023683504,Débito,Sem Identificação
+DEBITO AUTOMATICO CIELO S.A.-00250240000004089,Débito,Sem Identificação
+DEBITO AUTOMATICO NET SERVICOS-0886218400747,Débito,Sem Identificação
+DOC/TED INTERNET DOC INTERNET,Débito,Sem Identificação
+DOC/TED INTERNET TED INTERNET,Débito,Tarifas Bancárias
+ELECTRONSUPER IMPER,Débito,Sem Identificação
+"ENCARGOS LIMITE DE CRED ENCARGO - 14,71%",Débito,Sem Identificação
+"ENCARGOS LIMITE DE CRED ENCARGO - 15,84%",Débito,Sem Identificação
+"ENCARGOS LIMITE DE CRED ENCARGO - 16,41%",Débito,Sem Identificação
+"Enc Lim Credito Encargo - 07,73%",Débito,Juros e Encargos Bancários
+"Enc Lim Credito Encargo - 08,00%",Débito,Juros e Encargos Bancários
+"Enc Lim Credito Encargo - 08,29%",Débito,Juros e Encargos Bancários
+"Enc Lim Credito Encargo - 08,59%",Débito,Juros e Encargos Bancários
+FINANC IMOBILIARIO   112,Débito,Empréstimos
+FINANC IMOBILIARIO   113,Débito,Empréstimos
+FINANC IMOBILIARIO   114,Débito,Empréstimos
+FINANC IMOBILIARIO   115,Débito,Empréstimos
+FINANC IMOBILIARIO   116,Débito,Empréstimos
+FINANC IMOBILIARIO   117,Débito,Empréstimos
+FINANC IMOBILIARIO   118,Débito,Empréstimos
+FINANC IMOBILIARIO   119,Débito,Empréstimos
+FINANC IMOBILIARIO   120,Débito,Empréstimos
+Gasto c Credito,Débito,Sem Identificação
+INT  TIM CELULAR  009534,Débito,Sem Identificação
+INT  VIVO FIXO NAC 13 89,Débito,Sem Identificação
+INT PAG TIT  033,Débito,Sem Identificação
+INT PAG TIT  041,Débito,Sem Identificação
+INT PAG TIT  104,Débito,Sem Identificação
+INT PERS BLACK,Débito,Sem Identificação
+INT PERS VISA,Débito,Sem Identificação
+INT SEFAZ SC DARE 023000,Débito,Sem Identificação
+INT SEFAZ SC DARE 282351,Débito,Sem Identificação
+INT SEFAZ SC DARE 818137,Débito,Sem Identificação
+INT TIM CELULAR  0095348,Débito,Sem Identificação
+IOF,Débito,IOF
+IOF S/ UTILIZACAO LIMITE,Débito,Sem Identificação
+Iof Util Limite,Débito,Sem Identificação
+JUROS EXCESSO LIM CONTA,Débito,Sem Identificação
+JUROS LIMITE ADIC CONTA,Débito,Sem Identificação
+JUROS LIMITE DA CONTA,Débito,Juros e Encargos Bancários
+MOBILE PAG TIT 215045163000,Débito,Sem Identificação
+MOBILE PAG TIT 661043207000,Débito,Sem Identificação
+MOBILE PAG TIT 671043207000,Débito,Sem Identificação
+MOBILE PAG TIT 994016279000,Débito,Sem Identificação
+MOBILE PAG TIT BANCO 001,Débito,Sem Identificação
+MOBILE PAG TIT BANCO 033,Débito,Sem Identificação
+MOBILE PAG TIT BANCO 041,Débito,Sem Identificação
+MOBILE PAG TIT BANCO 104,Débito,Sem Identificação
+MOBILE PAG TIT BANCO 237,Débito,Sem Identificação
+MOBILEPAG TIT 2150451630,Débito,Sem Identificação
+MOBILEPAG TIT 6710432070,Débito,Sem Identificação
+MOBILEPAG TIT 9927077350,Débito,Sem Identificação
+MOBILEPAG TIT BANCO 001,Débito,Sem Identificação
+MOBILEPAG TIT BANCO 033,Débito,Sem Identificação
+MOBILEPAG TIT BANCO 041,Débito,Sem Identificação
+MOBILEPAG TIT BANCO 104,Débito,Sem Identificação
+MORA CAPITAL DE GIRO,Débito,Sem Identificação
+Mora Credito Pessoal,Débito,Sem Identificação
+Mora Encargos,Débito,Sem Identificação
+ON    IFOOD   NIC,Débito,Sem Identificação
+PAG TIT INT 001,Débito,Sem Identificação
+PAG TIT INT 041,Débito,Sem Identificação
+PAG TITINT   104,Débito,Sem Identificação
+PAGAMENTO  CONSORCIO,Débito,Sem Identificação
+PAGTO A VISTA SALDO DEV,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA 070164194101044300BRADESCO ADMIN,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA ALMOCO,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA AVAI,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA CASSOL,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA CLINIPAM,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA CLINIPAN,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA CLINIPAN 1 NOVO,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA CONTRATO 1,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA CREF 1,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA CREF 2,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA CREF 3,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA CREF 4,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA CREF 5,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA DINAMICA,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA DINAMICA05,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA HABITASUL,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA INVENTA,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA INVENTA2,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA IPTU,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA IPTU CASA,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA KUERTEN,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA KURTEN,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA MATERIAL LIMPEZA,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA NF,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA REFEICOES,Débito,Sem Identificação
+PAGTO ELETRON  COBRANCA RIACHUELO,Débito,Sem Identificação
+PAGTO ELETRONICO TRIBUTO INTERNET --INSS/GPS,Débito,Sem Identificação
+PAGTO ELETRONICO TRIBUTO INTERNET --SEFAZ/SC,Débito,Sem Identificação
+PAY   IFD IFOOD C,Débito,Sem Identificação
+PERS BLACK  3615 6215,Débito,Sem Identificação
+PERS BLACK  3619 1826,Débito,Sem Identificação
+PIX QR CODE DINAMICO DES: ATUALIZA VALE PARAIBA 08/03,Débito,Sem Identificação
+PIX QR CODE DINAMICO DES: ATUALIZA VALE PARAIBA 17/02,Débito,Sem Identificação
+PIX QR CODE DINAMICO DES: NIC BR                15/04,Débito,Sem Identificação
+PIX QR CODE ESTATICO DES: PLOTHOUSE IMPRESSOS C 16/01,Débito,Sem Identificação
+PIX QRS CAC CAPITAL09 02,Débito,Sem Identificação
+PIX QRS CARTAO CASS28 03,Débito,Sem Identificação
+PIX QRS JACILA PERE30 03,Débito,Sem Identificação
+PIX QRS KIWIFY20 04,Débito,Sem Identificação
+PIX QRS MAR DE JURE28 12,Débito,Sem Identificação
+PIX QRS PIX MARKETP02 12,Débito,Sem Identificação
+PIX QRS PIX MARKETP23 11,Débito,Sem Identificação
+PIX QRS PLOTHOUSE I22 09,Débito,Sem Identificação
+PIX QRS PLOTHOUSE I30 08,Débito,Sem Identificação
+PIX QRS SUPERMERCAD06 01,Débito,Sem Identificação
+PIX QRS TELEFONICA 27 01,Débito,Sem Identificação
+PIX QRS TIM S A  08 04,Débito,Sem Identificação
+PIX QRS TIM S A  10 02,Débito,Sem Identificação
+PIX QRS TIM S A  16 03,Débito,Sem Identificação
+PIX QRS TIM S A  18 01,Débito,Sem Identificação
+PIX QRS UBER04 12,Débito,Sem Identificação
+PIX QRS UBER31 08,Débito,Sem Identificação
+PIX QRS VAKINHA03 12,Débito,Sem Identificação
+PIX TRANSF  50 701 28 01,Débito,Sem Identificação
+PIX TRANSF  534631302 04,Débito,Sem Identificação
+PIX TRANSF  A S ALM17 03,Débito,Sem Identificação
+PIX TRANSF  AGUAS  05 04,Débito,Sem Identificação
+PIX TRANSF  AGUAS  05 09,Débito,Sem Identificação
+PIX TRANSF  AGUAS  05 10,Débito,Sem Identificação
+PIX TRANSF  AGUAS  06 03,Débito,Sem Identificação
+PIX TRANSF  AGUAS  06 04,Débito,Sem Identificação
+PIX TRANSF  AGUAS  06 11,Débito,Sem Identificação
+PIX TRANSF  AMANDA 08 03,Débito,Sem Identificação
+PIX TRANSF  CIANDRA02 09,Débito,Sem Identificação
+PIX TRANSF  CIANDRA05 09,Débito,Sem Identificação
+PIX TRANSF  COSTAO 19 09,Débito,Sem Identificação
+PIX TRANSF  D B F I15 09,Débito,Sem Identificação
+PIX TRANSF  DAQUIPR04 12,Débito,Sem Identificação
+PIX TRANSF  DAQUIPR30 01,Débito,Sem Identificação
+PIX TRANSF  EDSON A05 09,Débito,Sem Identificação
+PIX TRANSF  EDSON A06 04,Débito,Sem Identificação
+PIX TRANSF  EDSON A28 03,Débito,Sem Identificação
+PIX TRANSF  EDVANIA03 04,Débito,Sem Identificação
+PIX TRANSF  EDVANIA20 03,Débito,Sem Identificação
+PIX TRANSF  EDVANIA24 01,Débito,Sem Identificação
+PIX TRANSF  ESTACAO26 09,Débito,Sem Identificação
+PIX TRANSF  FIGUEIR15 03,Débito,Sem Identificação
+PIX TRANSF  FLOW QU01 09,Débito,Sem Identificação
+PIX TRANSF  FLOW ST20 03,Débito,Sem Identificação
+PIX TRANSF  GERVASI03 01,Débito,Sem Identificação
+PIX TRANSF  GILSON 20 09,Débito,Sem Identificação
+PIX TRANSF  GILSON 30 08,Débito,Sem Identificação
+PIX TRANSF  GUILHER14 09,Débito,Sem Identificação
+PIX TRANSF  JHONATH09 01,Débito,Sem Identificação
+PIX TRANSF  JOAO CA10 11,Débito,Sem Identificação
+PIX TRANSF  JOSE MA05 09,Débito,Sem Identificação
+PIX TRANSF  JOSE MA30 01,Débito,Sem Identificação
+PIX TRANSF  JURERE 28 03,Débito,Sem Identificação
+PIX TRANSF  Jose Ma25 11,Débito,Sem Identificação
+PIX TRANSF  LUCIANE07 12,Débito,Sem Identificação
+PIX TRANSF  LUCIANE22 09,Débito,Sem Identificação
+PIX TRANSF  LUIZA A03 11,Débito,Sem Identificação
+PIX TRANSF  LUX HOU06 01,Débito,Sem Identificação
+PIX TRANSF  MARCEL 04 12,Débito,Sem Identificação
+PIX TRANSF  MARCEL 09 10,Débito,Sem Identificação
+PIX TRANSF  MARCELO01 04,Débito,Sem Identificação
+PIX TRANSF  MARCELO03 03,Débito,Sem Identificação
+PIX TRANSF  MARCELO03 11,Débito,Sem Identificação
+PIX TRANSF  MARCELO04 04,Débito,Sem Identificação
+PIX TRANSF  MARCELO05 04,Débito,Sem Identificação
+PIX TRANSF  MARCELO09 11,Débito,Sem Identificação
+PIX TRANSF  MARCELO19 10,Débito,Sem Identificação
+PIX TRANSF  MARCELO23 11,Débito,Sem Identificação
+PIX TRANSF  MARCELO25 10,Débito,Sem Identificação
+PIX TRANSF  MARCELO30 03,Débito,Sem Identificação
+PIX TRANSF  MATEUS 12 09,Débito,Sem Identificação
+PIX TRANSF  MATEUS 18 10,Débito,Sem Identificação
+PIX TRANSF  MATEUS 27 11,Débito,Sem Identificação
+PIX TRANSF  MATEUS 28 09,Débito,Sem Identificação
+PIX TRANSF  MIRIAN 31 03,Débito,Sem Identificação
+PIX TRANSF  PET STA28 01,Débito,Sem Identificação
+PIX TRANSF  PIETRO 01 09,Débito,Sem Identificação
+PIX TRANSF  PIETRO 04 11,Débito,Sem Identificação
+PIX TRANSF  PIETRO 15 09,Débito,Sem Identificação
+PIX TRANSF  PIETRO 25 11,Débito,Sem Identificação
+PIX TRANSF  RENATO 05 01,Débito,Sem Identificação
+PIX TRANSF  ROBERTO11 03,Débito,Sem Identificação
+PIX TRANSF  RODRIGO05 10,Débito,Sem Identificação
+PIX TRANSF  RONALDO02 01,Débito,Sem Identificação
+PIX TRANSF  SILVIA 05 10,Débito,Sem Identificação
+PIX TRANSF  SILVIA 06 04,Débito,Sem Identificação
+PIX TRANSF  SILVIA 06 09,Débito,Sem Identificação
+PIX TRANSF  SILVIA 15 11,Débito,Sem Identificação
+PIX TRANSF  SILVIA 18 04,Débito,Sem Identificação
+PIX TRANSF  SILVIA 24 08,Débito,Sem Identificação
+PIX TRANSF  SILVIA 28 09,Débito,Sem Identificação
+PIX TRANSF  SIMONSE05 12,Débito,Sem Identificação
+PIX TRANSF  STORE B14 09,Débito,Sem Identificação
+PIX TRANSF  VERA RE30 10,Débito,Sem Identificação
+PIX TRANSF AGUAS  05 02,Débito,Sem Identificação
+PIX TRANSF AGUAS  06 03,Débito,Sem Identificação
+PIX TRANSF AGUAS  07 05,Débito,Sem Identificação
+PIX TRANSF AGUAS  08 01,Débito,Sem Identificação
+PIX TRANSF AGUAS  08 02,Débito,Sem Identificação
+PIX TRANSF ALINE R08 03,Débito,Sem Identificação
+PIX TRANSF ALMIR S14 02,Débito,Sem Identificação
+PIX TRANSF ALMIR S30 12,Débito,Sem Identificação
+PIX TRANSF Bruno D06 02,Débito,Sem Identificação
+PIX TRANSF CARLOS 28 12,Débito,Sem Identificação
+PIX TRANSF Carolin01 05,Débito,Sem Identificação
+PIX TRANSF DAQUIPR12 01,Débito,Sem Identificação
+PIX TRANSF EC VIST26 06,Débito,Sem Identificação
+PIX TRANSF EDSON A06 03,Débito,Sem Identificação
+PIX TRANSF EDSON A10 02,Débito,Sem Identificação
+PIX TRANSF EDSON A19 05,Débito,Sem Identificação
+PIX TRANSF FEDERIC29 04,Débito,Sem Identificação
+PIX TRANSF GABRIEL07 05,Débito,Sem Identificação
+PIX TRANSF JOSE MA27 02,Débito,Sem Identificação
+PIX TRANSF JOSE MA30 04,Débito,Sem Identificação
+PIX TRANSF JURERE 25 11,Débito,Sem Identificação
+PIX TRANSF MAIRI T05 05,Débito,Sem Identificação
+PIX TRANSF MARCELO02 01,Débito,Sem Identificação
+PIX TRANSF MARCELO16 03,Débito,Sem Identificação
+PIX TRANSF MARCELO30 11,Débito,Sem Identificação
+PIX TRANSF MARIO J17 01,Débito,Sem Identificação
+PIX TRANSF MATEUS 27 02,Débito,Sem Identificação
+PIX TRANSF Ricardo20 01,Débito,Sem Identificação
+PIX TRANSF SILVIA 02 01,Débito,Sem Identificação
+PIX TRANSF SILVIA 11 02,Débito,Sem Identificação
+PIX TRANSF SILVIA 11 03,Débito,Sem Identificação
+PIX TRANSF SILVIA 23 01,Débito,Sem Identificação
+PIX TRANSF SONIA M23 12,Débito,Sem Identificação
+PIX TRANSF SONIA M28 12,Débito,Sem Identificação
+PIX TRANSF manoela22 01,Débito,Sem Identificação
+Pagto Cobranca Bradesco Seg-resid/outros,Débito,Sem Identificação
+Pagto Cobranca Cref,Débito,Sem Identificação
+Pagto Cobranca Pet Star,Débito,Sem Identificação
+Pagto Cobranca Realize Credito Financiamento e,Débito,Sem Identificação
+Pagto Cobranca Setenta e Oito Reais e Noventa,Débito,Sem Identificação
+Pagto Cobranca Setenta e Sete Reais e Noventa,Débito,Sem Identificação
+Pagto Cobranca um Mil Seiscentos e Dez Reais,Débito,Sem Identificação
+Parc Cred Pess Contr 495067007 Parc 001/060,Débito,Sem Identificação
+Parc Cred Pess Contr 495067007 Parc 002/060,Débito,Sem Identificação
+Parc Cred Pess Contr 495067007 Parc 003/060,Débito,Sem Identificação
+Parc Cred Pess Contr 495067007 Parc 004/060,Débito,Sem Identificação
+Parc Cred Pess Contr 495067007 Parc 005/060,Débito,Sem Identificação
+Parc Cred Pess Contr 495067007 Parc 006/060,Débito,Sem Identificação
+Parc Cred Pess Contr 495067007 Parc 007/060,Débito,Sem Identificação
+Parc Cred Pess Contr 495067007 Parc 008/060,Débito,Sem Identificação
+Parc Cred Pess Contr 495067007 Parc 009/060,Débito,Sem Identificação
+Parc Cred Pess Contr 495067007 Parc 010/060,Débito,Sem Identificação
+Parc Cred Pess Contr 495067007 Parc 011/060,Débito,Sem Identificação
+Parc Cred Pess Contr 495067007 Parc 012/060,Débito,Sem Identificação
+Parc Cred Pess Contr 495067007 Parc 013/060,Débito,Sem Identificação
+Pgto Elet Trib Bradesco C-sefaz/sc,Débito,Sem Identificação
+Pix Qrcode Din Des: Boteco Caravela Ltda 28/07,Débito,Sem Identificação
+Pix Qrcode Din Des: Cac Capital - Medicos 29/02,Débito,Sem Identificação
+Pix Qrcode Din Des: Cunha e Lemos Assesso 10/11,Débito,Sem Identificação
+Pix Qrcode Din Des: Cunha e Lemos Assesso 14/12,Débito,Sem Identificação
+Pix Qrcode Est Des: Comunidade Crista do 12/11,Débito,Sem Identificação
+Pix Qrcode Est Des: Jaquelina Raque 11/10,Débito,Sem Identificação
+Pix Qrcode Est Des: Jessica Pinheiros Bri 01/11,Débito,Sem Identificação
+Pix Qrcode Est Des: Jurere Praia Clube 07/08,Débito,Sem Identificação
+Pix Qrcode Est Des: Jurere Praia Clube 20/02,Débito,Sem Identificação
+Pix Qrcode Est Des: Jurere Praia Clube 27/07,Débito,Sem Identificação
+Pix Qrcode Est Des: Lidia Mauricia Laurea 09/09,Débito,Sem Identificação
+Pix Qrcode Est Des: Lidia Mauricia Laurea 10/09,Débito,Sem Identificação
+Pix Qrcode Est Des: Radio Cancao Nova 30/09,Débito,Sem Identificação
+Pix Qrcode Est Des: Radio Cancao Nova 31/01,Débito,Sem Identificação
+Pix Qrcode Est Des: Tim s a 12/11,Débito,Sem Identificação
+Saq Din Bco 24h 00045510 08011411,Débito,Sem Identificação
+Saq Din Bco 24h 00045510 21111513,Débito,Sem Identificação
+Saq Din Bco 24h 00045510 22021257,Débito,Sem Identificação
+Saq Din Bco 24h 00045510 27051625,Débito,Sem Identificação
+Saq Din Bco 24h 00045510 28061702,Débito,Sem Identificação
+Saq Din Bco 24h 00045510 28061703,Débito,Sem Identificação
+Saque Din Atm Ag02502maq038921seq0598608071520,Débito,Sem Identificação
+TARIFA BANCARIA CestaEmpresarial2,Débito,Tarifas Bancárias
+TARIFA BANCARIA MANUT CARTAO DEBITO,Débito,Tarifas Bancárias
+TARIFA BANCARIA TRANSF PGTO PIX,Débito,Tarifas Bancárias
+TBI 0741 72223 5,Débito,Sem Identificação
+TED DIF.TITUL.CC H.BANK DEST. Jose Mario Campeiz,Débito,Sem Identificação
+TRANSF CC PARA CC PJ COSTAO DO SANTINHO TURISMO E LAZ,Débito,Sem Identificação
+TRANSF CC PARA CC PJ JOSE MARIO CAMPEIZ,Débito,Sem Identificação
+TRANSF CC PARA CC PJ JURERE PRAIA CLUBE,Débito,Sem Identificação
+TRANSF FDOS DOC-E H BANK DEST.Jurer  praia clube,Débito,Sem Identificação
+TRANSF FDOS DOC-E H BANK DEST.Thais Sales Freitas,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: ALL GYM COM DE EQUIP  18/10,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: Ana Paula Pereira Sal 01/02,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: Ana Paula Pereira Sal 01/11,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: Ana Paula Pereira Sal 02/01,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: Ana Paula Pereira Sal 02/03,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: Ana Paula Pereira Sal 02/05,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: Ana Paula Pereira Sal 03/04,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: Ana Paula Pereira Sal 09/12,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: CARLOS LEANDRO GARROS 10/05,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: Claudia Lenise Ferraz 15/04,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: FREDERICO GENDRA RIBE 30/03,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: JURERE PRAIA CLUBE    17/02,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: JURERE PRAIA CLUBE    17/12,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: JURERE PRAIA CLUBE    18/03,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: JURERE PRAIA CLUBE    19/04,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: JURERE PRAIA CLUBE    21/11,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: JURERE PRAIA CLUBE    26/12,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: JURERE PRAIA CLUBE    28/04,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: JURERE PRAIA CLUBE    30/09,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: JURERE PRAIA CLUBE    31/10,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: LUIS AUGUSTO SALDANHA 09/02,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: LUIS AUGUSTO SALDANHA 18/10,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: LUIS AUGUSTO SALDANHA 24/09,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: Marcelo Alves da Silv 13/05,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: PAULA CRISTINA WALTRI 09/03,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: PAULA CRISTINA WALTRI 10/02,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: PAULA CRISTINA WALTRI 12/04,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: Pedro Henrique Fernan 06/09,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: RODRIGO MATEUS RAMBO  03/02,Débito,Sem Identificação
+TRANSFERENCIA PIX DES: RODRIGO MATEUS RAMBO  17/01,Débito,Sem Identificação
+TRANSFERENCIA PIX DEST: CENTRO DINAMICO DE EDUCACA,Débito,Sem Identificação
+TRANSFERENCIA PIX DEST: DIENER GENTIL LTDA,Débito,Sem Identificação
+TRANSFERENCIA PIX DEST: EVERLIN MARTINS,Débito,Sem Identificação
+TRANSFERENCIA PIX DEST: JURERE PRAIA CLUBE,Débito,Sem Identificação
+TRANSFERENCIA PIX DEST: Maricota Comercio Ltda,Débito,Sem Identificação
+TRANSFERENCIA PIX DEST: PAULA CRISTINA WALTRICK,Débito,Sem Identificação
+TRANSFERENCIA PIX DEST: PAULA CRISTINA WALTRICK 91,Débito,Sem Identificação
+TRANSFERENCIA PIX DEST: ROSANGELA PASA ERENO,Débito,Sem Identificação
+TRANSFERENCIA PIX DEST: TELEFONICA BRASIL S A,Débito,Sem Identificação
+TRANSFERENCIA PIX DEST: Terezinha Pereira Confecco,Débito,Sem Identificação
+Ted d Hbank* Dest. Edvania Conceicao fe,Débito,Sem Identificação
+Transfe Pix Des: Alvaro Elvis de Liz r 13/11,Débito,Sem Identificação
+Transfe Pix Des: Alvaro Elvis de Liz r 16/11,Débito,Sem Identificação
+Transfe Pix Des: Carla Patricia Matos 12/10,Débito,Sem Identificação
+Transfe Pix Des: Cleidir Luis Gerlach 08/12,Débito,Sem Identificação
+Transfe Pix Des: Cristina Carniel Vile 03/04,Débito,Sem Identificação
+Transfe Pix Des: Cristina Carniel Vile 06/05,Débito,Sem Identificação
+Transfe Pix Des: Cristina Carniel Vile 31/10,Débito,Sem Identificação
+Transfe Pix Des: Daquiprafora c e Ltda 06/02,Débito,Sem Identificação
+Transfe Pix Des: Daquiprafora c e Ltda 11/09,Débito,Sem Identificação
+Transfe Pix Des: Daquiprafora c e Ltda 15/10,Débito,Sem Identificação
+Transfe Pix Des: Dernivalda Evangelist 18/10,Débito,Sem Identificação
+Transfe Pix Des: Dernivalda Evangelist 28/01,Débito,Sem Identificação
+Transfe Pix Des: Edvania Conceicao Fer 05/06,Débito,Sem Identificação
+Transfe Pix Des: Edvania Conceicao Fer 17/08,Débito,Sem Identificação
+Transfe Pix Des: Edvania Conceicao Fer 19/04,Débito,Sem Identificação
+Transfe Pix Des: Edvania Conceicao Fer 19/11,Débito,Sem Identificação
+Transfe Pix Des: Edvania Conceicao Fer 25/11,Débito,Sem Identificação
+Transfe Pix Des: Everson de Lima Marti 27/02,Débito,Sem Identificação
+Transfe Pix Des: Gislene Gomes Barbosa 09/10,Débito,Sem Identificação
+Transfe Pix Des: Grace Kelly Garcia ga 23/08,Débito,Sem Identificação
+Transfe Pix Des: Jacanam Josue Lopes 15/12,Débito,Sem Identificação
+Transfe Pix Des: Jesica Soledad Lopez 09/08,Débito,Sem Identificação
+Transfe Pix Des: Jesica Soledad Lopez 12/08,Débito,Sem Identificação
+Transfe Pix Des: Joao Carlos Correa de 31/10,Débito,Sem Identificação
+Transfe Pix Des: Julia Barroso da Cruz 05/04,Débito,Sem Identificação
+Transfe Pix Des: Julia Barroso da Cruz 07/03,Débito,Sem Identificação
+Transfe Pix Des: Julia Barroso da Cruz 08/03,Débito,Sem Identificação
+Transfe Pix Des: Julia Barroso da Cruz 09/05,Débito,Sem Identificação
+Transfe Pix Des: Julia Barroso da Cruz 17/01,Débito,Sem Identificação
+Transfe Pix Des: Julia Barroso da Cruz 27/11,Débito,Sem Identificação
+Transfe Pix Des: Juliano Dos Santos qu 08/11,Débito,Sem Identificação
+Transfe Pix Des: Jurere Consultoria fi 08/02,Débito,Sem Identificação
+Transfe Pix Des: Jurere Consultoria fi 14/03,Débito,Sem Identificação
+Transfe Pix Des: Jurere Magazine 05/12,Débito,Sem Identificação
+Transfe Pix Des: Jurere Magazine 07/12,Débito,Sem Identificação
+Transfe Pix Des: Jurere Magazine 12/12,Débito,Sem Identificação
+Transfe Pix Des: Jurere Magazine 13/11,Débito,Sem Identificação
+Transfe Pix Des: Jurere Praia Clube 08/04,Débito,Sem Identificação
+Transfe Pix Des: Jurere Praia Clube 17/01,Débito,Sem Identificação
+Transfe Pix Des: Leandro Costa Dos San 28/11,Débito,Sem Identificação
+Transfe Pix Des: Ligia Fonseca Pinto 09/02,Débito,Sem Identificação
+Transfe Pix Des: Ligia Fonseca Pinto 19/01,Débito,Sem Identificação
+Transfe Pix Des: Ligia Fonseca Pinto 28/01,Débito,Sem Identificação
+Transfe Pix Des: Luiza Augusta Moreira 01/12,Débito,Sem Identificação
+Transfe Pix Des: Luiza Augusta Moreira 17/11,Débito,Sem Identificação
+Transfe Pix Des: Mario Armando Frate z 28/08,Débito,Sem Identificação
+Transfe Pix Des: Mateus Wickboldt de c 17/12,Débito,Sem Identificação
+Transfe Pix Des: Nilda Rosa Fortunato 06/12,Débito,Sem Identificação
+Transfe Pix Des: Patricia Helena Fuent 23/01,Débito,Sem Identificação
+Transfe Pix Des: Pietro Giuseppe Campe 13/11,Débito,Sem Identificação
+Transfe Pix Des: Pietro Giuseppe Campe 22/12,Débito,Sem Identificação
+Transfe Pix Des: Pietro Giuseppe Campe 26/02,Débito,Sem Identificação
+Transfe Pix Des: Roberta Cardoso Lopes 11/03,Débito,Sem Identificação
+Transfe Pix Des: Roberta Cardoso Lopes 19/03,Débito,Sem Identificação
+Transfe Pix Des: Sebastiao Atanazio da 14/01,Débito,Sem Identificação
+Transfe Pix Des: Sharon Senger 15/01,Débito,Sem Identificação
+Transfe Pix Des: Sharon Senger 15/03,Débito,Sem Identificação
+Transfe Pix Des: Sharon Senger 15/10,Débito,Sem Identificação
+Transfe Pix Des: Sharon Senger 16/02,Débito,Sem Identificação
+Transfe Pix Des: Sharon Senger 16/04,Débito,Sem Identificação
+Transfe Pix Des: Sharon Senger 17/08,Débito,Sem Identificação
+Transfe Pix Des: Sharon Senger 18/09,Débito,Sem Identificação
+Transfe Pix Des: Suelen Serapiao 16/03,Débito,Sem Identificação
+Transfe Pix Des: Suelen Serapiao 23/12,Débito,Sem Identificação
+Transfe Pix Des: Suelen Serapiao 26/12,Débito,Sem Identificação
+Transfe Pix Des: Suelen Serapiao 27/12,Débito,Sem Identificação
+Transfe Pix Des: Tatiane Barbosa da si 19/01,Débito,Sem Identificação
+Transfe Pix Des: Viviane Leite da Silv 08/12,Débito,Sem Identificação
+Visa Electron Abricar Loterias,Débito,Sem Identificação
+Visa Electron Armazem 3,Débito,Sem Identificação
+Visa Electron Beltrame s Floripa a,Débito,Sem Identificação
+Visa Electron Estoril Estacionamen,Débito,Sem Identificação
+Visa Electron Ikemacell Acess e,Débito,Sem Identificação
+Visa Electron Jamaica Bylos,Débito,Sem Identificação
+Visa Electron Janaina Leandra Fari,Débito,Sem Identificação
+Visa Electron Joaocarloscorrea,Débito,Sem Identificação
+Visa Electron Jurere Sports Center,Débito,Sem Identificação
+Visa Electron Padaria do Bistro,Débito,Sem Identificação
+Visa Electron Pag*primeva,Débito,Sem Identificação
+Visa Electron Shop Floripa - Puc,Débito,Sem Identificação
+Visa Electron Super Imperatriz,Débito,Sem Identificação
+Visa Electron Universo Paralelo,Débito,Sem Identificação
+Visa Electron You Mais Store,Débito,Sem Identificação
+WEB VISAIFD GO TEMA,Débito,Sem Identificação
