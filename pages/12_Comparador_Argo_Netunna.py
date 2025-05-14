@@ -24,9 +24,9 @@ for var in variaveis_session:
 st.subheader('🔹 Upload das Vendas')
 col1, col2 = st.columns(2)
 with col1:
-    pasta_vendas_argo = st.text_input('Caminho da Pasta de Vendas ARGO', r'C:\Users\mairo\OneDrive\Área de Trabalho\Teste Netunna\Vendas_Argo')
+    arquivos_argo = st.file_uploader("Upload arquivos ARGO (.json)", type="json", accept_multiple_files=True, key="upload_argo")
 with col2:
-    pasta_vendas_netunna = st.text_input('Caminho da Pasta de Vendas Netunna', r'C:\Users\mairo\OneDrive\Área de Trabalho\Teste Netunna\Vendas_Netunna')
+    arquivos_netunna = st.file_uploader("Upload arquivos Netunna (.json)", type="json", accept_multiple_files=True, key="upload_netunna")
 
 if st.button('🚀 Carregar Arquivos de Vendas', key='btn_carregar'):
     try:
@@ -35,8 +35,8 @@ if st.button('🚀 Carregar Arquivos de Vendas', key='btn_carregar'):
             st.session_state['empresas_netunna'] = mapeador.carregar_empresas_netunna()
 
         with st.spinner('🔄 Lendo vendas...'):
-            st.session_state['df_argo'] = comparador.carregar_todos_jsons_pasta(pasta_vendas_argo, tipo='argo')
-            st.session_state['df_netunna'] = comparador.carregar_todos_jsons_pasta(pasta_vendas_netunna, tipo='netunna')
+            st.session_state['df_argo'] = comparador.carregar_arquivos_upload(arquivos_argo, tipo='argo')
+            st.session_state['df_netunna'] = comparador.carregar_arquivos_upload(arquivos_netunna, tipo='netunna')
 
         with st.spinner('🔄 Mapeando Empresas...'):
             st.session_state['mapeamento'] = mapeador.mapear_empresas_por_cnpj(
