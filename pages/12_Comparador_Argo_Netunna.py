@@ -327,7 +327,7 @@ st.subheader('🔄 Pipeline de Fechamento Automático')
 if st.button('🚀 Executar Pipeline de Fechamento', key='btn_pipeline'):
     with st.spinner('🔄 Executando pipeline de fechamento...'):
         try:
-            resultados = fechamento.executar_pipeline_completa(pasta_vendas_argo, pasta_vendas_netunna)
+            resultados = fechamento.executar_pipeline_completa(st.session_state['df_argo'], st.session_state['df_netunna'])
             st.session_state['resultados_pipeline'] = resultados
             st.success(f'✅ Pipeline executada com sucesso para {len(resultados)} empresas!')
             
