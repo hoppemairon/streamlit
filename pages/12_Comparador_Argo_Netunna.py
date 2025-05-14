@@ -41,6 +41,8 @@ if st.button('🚀 Carregar Arquivos de Vendas', key='btn_carregar'):
         with st.spinner('🔄 Lendo vendas...'):
             st.session_state['df_argo'] = comparador.carregar_arquivos_upload(arquivos_argo, tipo='argo')
             st.session_state['df_netunna'] = comparador.carregar_arquivos_upload(arquivos_netunna, tipo='netunna')
+            st.write("📋 Colunas df_argo:", st.session_state['df_argo'].columns.tolist())
+            st.write("📋 Colunas df_netunna:", st.session_state['df_netunna'].columns.tolist())
 
         with st.spinner('🔄 Mapeando Empresas...'):
             st.session_state['mapeamento'] = mapeador.mapear_empresas_por_cnpj(
@@ -68,12 +70,16 @@ if st.session_state['df_argo'] is not None and st.session_state['df_netunna'] is
             id_empresa_argo = empresa_row['empresa_argo_id'].values[0]
             id_empresa_netunna = empresa_row['empresa_netunna_id'].values[0]
 
-            vendas_argo = st.session_state['df_argo'][st.session_state['df_argo']['idempresa'] == id_empresa_argo].copy()
-            if 'empresa_codigo' not in st.session_state['df_netunna'].columns:
-                st.error("❌ A coluna 'empresa_codigo' não existe em df_netunna. Verifique a importação dos dados.")
-                vendas_netunna = pd.DataFrame()  # cria DataFrame vazio para evitar erro
+            if 'idempresa' not in st.session_state['df_argo'].columns:
+                st.error("❌ A coluna 'idempresa' não existe em df_argo. Verifique a importação dos dados.")
+                vendas_argo = pd.DataFrame()
             else:
-                vendas_netunna = st.session_state['df_netunna'][st.session_state['df_netunna']['empresa_codigo'] == id_empresa_netunna].copy()
+                vendas_argo = st.session_state['df_argo'][st.session_state['df_argo']['idempresa'] == int(id_empresa_argo)].copy()
+            if 'venda.empresa_codigo' not in st.session_state['df_netunna'].columns:
+                st.error("❌ A coluna 'venda.empresa_codigo' não existe em df_netunna. Verifique a importação dos dados.")
+                vendas_netunna = pd.DataFrame()
+            else:
+                vendas_netunna = st.session_state['df_netunna'][st.session_state['df_netunna']['venda.empresa_codigo'] == str(id_empresa_netunna)].copy()
 
             # Verificar se há vendas para a empresa selecionada
             if vendas_argo.empty and vendas_netunna.empty:
@@ -81,7 +87,10 @@ if st.session_state['df_argo'] is not None and st.session_state['df_netunna'] is
             else:
                 # Preparar datas para filtro
                 vendas_argo['data_somente'] = pd.to_datetime(vendas_argo['datavenda'], errors='coerce').dt.date
-                vendas_netunna['data_somente'] = pd.to_datetime(vendas_netunna['venda.venda_data'], errors='coerce').dt.date
+                if not vendas_netunna.empty and 'venda.venda_data' in vendas_netunna.columns:
+                    vendas_netunna['data_somente'] = pd.to_datetime(vendas_netunna['venda.venda_data'], errors='coerce').dt.date
+                else:
+                    vendas_netunna['data_somente'] = pd.NaT
 
                 todas_datas = sorted(set(vendas_argo['data_somente'].dropna()).union(set(vendas_netunna['data_somente'].dropna())))
                 
@@ -238,9 +247,8 @@ if 'comparativo' in st.session_state and st.session_state['comparativo'] is not 
                         id_empresa_netunna = empresa_row['empresa_netunna_id'].values[0]
                         
                         vendas_netunna_data = st.session_state['df_netunna'][
-                            st.session_state['df_netunna']['empresa_codigo'] == id_empresa_netunna
+                            st.session_state['df_netunna']['venda.empresa_codigo'] == str(id_empresa_netunna)
                         ].copy()
-                        
                         vendas_netunna_data['data_dia'] = pd.to_datetime(vendas_netunna_data['venda.venda_data'], errors='coerce').dt.date
 
                         # NSUs já usados
