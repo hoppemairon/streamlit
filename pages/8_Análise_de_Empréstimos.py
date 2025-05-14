@@ -92,7 +92,8 @@ def marcar_emprestimos():
         index=1,
         horizontal=True
     )
-    col1, col2 = st.columns(2)
+
+    col1, col2, col3, col4 = st.columns(4)
     with col1:
         filtro_descricao = st.text_input("🔍 Filtrar pela descrição:")
     with col2:
@@ -101,9 +102,36 @@ def marcar_emprestimos():
             value=[],
             format="DD/MM/YYYY"
         )
+    with col3:
+        arquivos_disponiveis = df['Arquivo'].unique().tolist()
+        arquivos_disponiveis.insert(0, "<Todos>")
+        filtro_arquivo = st.selectbox("📄 Filtrar por arquivo:", options=arquivos_disponiveis)
+    with col4:
+        filtro_valor = st.number_input("💰 Filtrar por valor exato (R$)", value=0.0)
+
     df_filtrado = df.copy()
+
+    # Filtro por descrição
     if filtro_descricao:
         df_filtrado = df_filtrado[df_filtrado['Descrição'].str.contains(filtro_descricao, case=False, na=False)]
+    # Filtro por arquivo
+    if filtro_arquivo and filtro_arquivo != "<Todos>":
+        df_filtrado = df_filtrado[df_filtrado['Arquivo'] == filtro_arquivo]
+    # Filtro por valor exato
+    if filtro_valor != 0.0:
+        df_filtrado['Valor_Numerico'] = pd.to_numeric(df_filtrado['Valor (R$)'], errors='coerce')
+        tolerancia = 0.05
+        df_filtrado = df_filtrado[
+            (
+                (df_filtrado['Valor_Numerico'] >= filtro_valor - tolerancia) &
+                (df_filtrado['Valor_Numerico'] <= filtro_valor + tolerancia)
+            ) |
+            (
+                (df_filtrado['Valor_Numerico'] >= -filtro_valor - tolerancia) &
+                (df_filtrado['Valor_Numerico'] <= -filtro_valor + tolerancia)
+            )
+        ].drop(columns=['Valor_Numerico'])
+    # Filtro por data
     if filtro_datas:
         df_filtrado['Data'] = pd.to_datetime(df_filtrado['Data'], errors='coerce')
         if isinstance(filtro_datas, tuple):
@@ -116,12 +144,16 @@ def marcar_emprestimos():
             filtro_data_unica = filtro_datas
             df_filtrado = df_filtrado[df_filtrado['Data'].dt.date == filtro_data_unica]
         df_filtrado['Data'] = df_filtrado['Data'].dt.strftime('%d/%m/%Y')
+
+    # Ordena por data real para garantir exibição correta
     if 'Data' in df_filtrado.columns:
         df_filtrado['Data_dt'] = pd.to_datetime(df_filtrado['Data'], format='%d/%m/%Y', errors='coerce')
         df_filtrado = df_filtrado.sort_values('Data_dt').drop(columns=['Data_dt'])
+
     df_filtrado['Valor (R$) - BR'] = df_filtrado['Valor (R$)'].apply(
         lambda x: f"R$ {x:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".") if pd.notnull(x) else ""
     )
+
     colunas_exibir = [
         'Arquivo', 'Data', 'Descrição', 'Valor (R$) - BR', 'Num Doc',
         'Tipo', 'Banco', 'Conta', 'Marcar_Como_Emprestimo'
@@ -129,6 +161,7 @@ def marcar_emprestimos():
     colunas_exibir = [col for col in colunas_exibir if col in df_filtrado.columns]
     df_exibir = df_filtrado[colunas_exibir].copy()
 
+    # Exibição conforme modo escolhido
     if modo_visualizacao == "Editar":
         edited_df = st.data_editor(
             df_exibir,
@@ -144,7 +177,7 @@ def marcar_emprestimos():
             use_container_width=True,
             key="editor_transacoes"
         )
-        # Atualiza a coluna de marcação no DataFrame original
+        # Atualiza a coluna no DataFrame original
         df_filtrado['Marcar_Como_Emprestimo'] = edited_df['Marcar_Como_Emprestimo']
         df.loc[df_filtrado.index, 'Marcar_Como_Emprestimo'] = df_filtrado['Marcar_Como_Emprestimo']
     else:
@@ -153,11 +186,11 @@ def marcar_emprestimos():
     df_marcado = df[df["Marcar_Como_Emprestimo"] == True].copy()
     if not df_marcado.empty and 'Contrato' not in df_marcado.columns:
         df_marcado['Contrato'] = ""
-    # Atualiza session_state apenas ao clicar no botão
+
     if st.button("💾 Salvar marcações atuais"):
         st.session_state.emprestimos_df = df_marcado
         salvar_marcacoes(df_marcado)
-    # Exibe dataframe marcado apenas para visualização
+
     st.info(f"{len(df_marcado)} pagamentos de empréstimo marcados.")
     return df_marcado
 
@@ -261,6 +294,34 @@ def exibir_transacoes():
         colunas_tabela = [col for col in colunas_tabela if col in df_contrato.columns]
         st.dataframe(df_contrato[colunas_tabela], use_container_width=True)
 
+# ---------------------- Relatório Descritivo dos Contratos ----------------------
+def gerar_relatorio_contratos():
+    st.divider()
+    st.subheader("📄 Relatório Descritivo dos Contratos")
+
+    for contrato in st.session_state.gerenciador_contratos.contratos.values():
+        data_inicio = contrato.data_primeira_parcela.strftime('%d/%m/%Y')
+        data_fim = (contrato.data_primeira_parcela + pd.DateOffset(months=contrato.prazo_meses-1)).strftime('%d/%m/%Y')
+        try:
+            parcela = contrato.valor_parcela
+        except AttributeError:
+            valor = contrato.valor_contratado
+            taxa = contrato.taxa_juros / 100 if contrato.taxa_juros > 1 else contrato.taxa_juros
+            n = contrato.prazo_meses
+            parcela = valor * (taxa * (1 + taxa)**n) / ((1 + taxa)**n - 1) if taxa != 0 else valor / n
+
+        st.markdown(f"""
+**CONTRATO {contrato.numero_contrato}**
+
+Emissão: {contrato.data_contrato.strftime('%d/%m/%Y')} – Valor: R$ {contrato.valor_contratado:,.2f} – {contrato.tipo_contrato}
+
+Encargos Financeiros: Juros anuais de {contrato.taxa_juros*12:.2f}% / {contrato.taxa_juros:.2f}% ao mês
+
+Forma de pagamento: {contrato.prazo_meses} parcelas de R$ {parcela:,.2f} – {data_inicio} a {data_fim}
+
+Taxa Média: {contrato.taxa_juros:.2f}% ao mês
+        """)
+
 # ---------------------- Inicialização de Estado ----------------------
 if 'ofx_raw_df' not in st.session_state:
     st.session_state.ofx_raw_df = None
@@ -301,7 +362,9 @@ if st.session_state.emprestimos_df is not None and not st.session_state.empresti
 # 5. Relatórios e tabelas → leitura apenas, sem sobrescrever session_state
 if st.session_state.emprestimos_df is not None and not st.session_state.emprestimos_df.empty:
     gerar_resumo_contratos()
+
     exibir_transacoes()
+    gerar_relatorio_contratos()
 
 # 6. Exibe todas as transações importadas (apenas leitura)
 with st.expander("📑 Ver todas as transações importadas"):
