@@ -106,16 +106,11 @@ def carregar_adquirentes_bandeiras():
     return adquirentes_df, bandeiras_df
 
 def save_json(data, empresa_codigo, date_str):
-    import io
-    json_bytes = io.BytesIO()
-    json_bytes.write(json.dumps(data, indent=4).encode('utf-8'))
-    json_bytes.seek(0)
-
-    st.download_button(
-        label=f"📥 Baixar ListaVendasEmpresa{empresa_codigo}_{date_str}.json",
-        data=json_bytes,
-        file_name=f"ListaVendasEmpresa{empresa_codigo}_{date_str}.json",
-        mime="application/json"
+    json_data = json.dumps(data, indent=4).encode('utf-8')
+    if 'json_arquivos' not in st.session_state:
+        st.session_state['json_arquivos'] = []
+    st.session_state['json_arquivos'].append(
+        {"empresa": empresa_codigo, "data": date_str, "bytes": json_data}
     )
 
 # --- INTERFACE STREAMLIT ---
@@ -260,3 +255,32 @@ if st.button("Buscar dados"):
 
     else:
         st.warning("Colunas necessárias para o resumo não encontradas no DataFrame.")
+
+    import io
+    import zipfile
+
+    if 'json_arquivos' in st.session_state and st.session_state['json_arquivos']:
+        arquivos = st.session_state['json_arquivos']
+        st.subheader("Download dos Arquivos Netunna:")
+
+        if len(arquivos) == 1:
+            arquivo = arquivos[0]
+            st.download_button(
+                label=f"📥 Baixar Empresa {arquivo['empresa']} - {arquivo['data']}.json",
+                data=arquivo['bytes'],
+                file_name=f"ListaVendasEmpresa{arquivo['empresa']}_{arquivo['data']}.json",
+                mime="application/json"
+            )
+        elif len(arquivos) > 1:
+            zip_buffer = io.BytesIO()
+            with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zip_file:
+                for arquivo in arquivos:
+                    filename = f"ListaVendasEmpresa{arquivo['empresa']}_{arquivo['data']}.json"
+                    zip_file.writestr(filename, arquivo["bytes"])
+            zip_buffer.seek(0)
+            st.download_button(
+                label="📥 Baixar Todos Arquivos (.zip)",
+                data=zip_buffer,
+                file_name="Arquivos_Netunna.zip",
+                mime="application/zip"
+            )
