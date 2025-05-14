@@ -398,8 +398,10 @@ def carregar_arquivos_upload(arquivos, tipo):
                     for bloco in dados:
                         if 'data' in bloco:
                             df = pd.json_normalize(bloco['data'])
+                            df['venda.empresa_codigo'] = bloco.get('empresa_codigo')
                             dataframes.append(df)
                 elif 'data' in dados:
                     df = pd.DataFrame(dados['data'])
+                    df['venda.empresa_codigo'] = dados.get('empresa_codigo')
                     dataframes.append(df)
     return pd.concat(dataframes, ignore_index=True) if dataframes else pd.DataFrame()
