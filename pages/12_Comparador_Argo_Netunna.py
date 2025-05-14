@@ -28,6 +28,10 @@ with col1:
 with col2:
     arquivos_netunna = st.file_uploader("Upload arquivos Netunna (.json)", type="json", accept_multiple_files=True, key="upload_netunna")
 
+# Exibe quantidade de arquivos carregados para cada upload
+st.info(f"📥 ARGO: {len(arquivos_argo) if arquivos_argo else 0} arquivo(s) carregado(s).")
+st.info(f"📥 Netunna: {len(arquivos_netunna) if arquivos_netunna else 0} arquivo(s) carregado(s).")
+
 if st.button('🚀 Carregar Arquivos de Vendas', key='btn_carregar'):
     try:
         with st.spinner('🔄 Lendo empresas configuradas...'):
