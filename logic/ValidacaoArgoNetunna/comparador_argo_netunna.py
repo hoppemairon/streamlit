@@ -382,3 +382,20 @@ def resumo_por_status_valor(comparativo: pd.DataFrame) -> pd.DataFrame:
     ).reset_index()
 
     return resumo   
+
+def carregar_arquivos_upload(arquivos, tipo):
+    import json
+    import pandas as pd
+    dataframes = []
+    if arquivos:
+        for file in arquivos:
+            dados = json.load(file)
+            if isinstance(dados, list):
+                df = pd.DataFrame(dados)
+            elif isinstance(dados, dict):
+                df = pd.DataFrame([dados])
+            else:
+                continue
+            df['source'] = tipo
+            dataframes.append(df)
+    return pd.concat(dataframes, ignore_index=True) if dataframes else pd.DataFrame()
