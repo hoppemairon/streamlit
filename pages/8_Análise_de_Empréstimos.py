@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import io
@@ -37,6 +36,11 @@ def carregar_dados_ofx(uploaded_files):
         except Exception as e:
             st.error(f"Erro ao processar {file.name}: {e}")
     df = pd.DataFrame(todas_transacoes)
+    # Remove possíveis duplicidades
+    colunas_unicas = ['Arquivo', 'Data', 'Descrição', 'Valor (R$)', 'Num Doc']
+    colunas_unicas = [col for col in colunas_unicas if col in df.columns]
+    if colunas_unicas:
+        df = df.drop_duplicates(subset=colunas_unicas, keep='first')
     # Padroniza nome da coluna de documento
     if "Num Doc." in df.columns and "Num Doc" not in df.columns:
         df = df.rename(columns={"Num Doc.": "Num Doc"})
@@ -70,6 +74,7 @@ def salvar_marcacoes(df_marcado):
     if not colunas_presentes:
         st.warning("Nenhuma coluna identificadora encontrada para salvar marcações.")
         return
+    df_marcado = df_marcado.drop_duplicates(subset=colunas_presentes, keep='first')
     df_marcado[colunas_presentes].drop_duplicates().to_csv(
         CAMINHO_MARCACOES,
         mode='a',
@@ -81,10 +86,39 @@ def salvar_marcacoes(df_marcado):
 def marcar_emprestimos():
     df = st.session_state.ofx_raw_df.copy()
     st.subheader("📜 Marcação Manual de Pagamentos de Empréstimo")
-    filtro_descricao = st.text_input("🔍 Filtrar transações pela descrição:")
+    modo_visualizacao = st.radio(
+        "Escolha o modo de visualização:",
+        options=["Editar", "Ordenar"],
+        index=0,
+        horizontal=True
+    )
+    col1, col2 = st.columns(2)
+    with col1:
+        filtro_descricao = st.text_input("🔍 Filtrar pela descrição:")
+    with col2:
+        filtro_datas = st.date_input(
+            "📅 Filtrar por data (deixe vazio para não filtrar):", 
+            value=[],
+            format="DD/MM/YYYY"
+        )
     df_filtrado = df.copy()
     if filtro_descricao:
         df_filtrado = df_filtrado[df_filtrado['Descrição'].str.contains(filtro_descricao, case=False, na=False)]
+    if filtro_datas:
+        df_filtrado['Data'] = pd.to_datetime(df_filtrado['Data'], errors='coerce')
+        if isinstance(filtro_datas, tuple):
+            start_date, end_date = filtro_datas
+            df_filtrado = df_filtrado[
+                (df_filtrado['Data'].dt.date >= start_date) &
+                (df_filtrado['Data'].dt.date <= end_date)
+            ]
+        else:
+            filtro_data_unica = filtro_datas
+            df_filtrado = df_filtrado[df_filtrado['Data'].dt.date == filtro_data_unica]
+        df_filtrado['Data'] = df_filtrado['Data'].dt.strftime('%d/%m/%Y')
+    if 'Data' in df_filtrado.columns:
+        df_filtrado['Data_dt'] = pd.to_datetime(df_filtrado['Data'], format='%d/%m/%Y', errors='coerce')
+        df_filtrado = df_filtrado.sort_values('Data_dt').drop(columns=['Data_dt'])
     df_filtrado['Valor (R$) - BR'] = df_filtrado['Valor (R$)'].apply(
         lambda x: f"R$ {x:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".") if pd.notnull(x) else ""
     )
@@ -95,23 +129,27 @@ def marcar_emprestimos():
     colunas_exibir = [col for col in colunas_exibir if col in df_filtrado.columns]
     df_exibir = df_filtrado[colunas_exibir].copy()
 
-    edited_df = st.data_editor(
-        df_exibir,
-        column_config={
-            "Marcar_Como_Emprestimo": st.column_config.CheckboxColumn(
-                "É pagamento de empréstimo?", default=False
-            ),
-            "Valor (R$) - BR": st.column_config.TextColumn(
-                "Valor (R$)", disabled=True
-            )
-        },
-        num_rows="dynamic",
-        use_container_width=True,
-        key="editor_transacoes"
-    )
-    # Atualiza a coluna de marcação no DataFrame original
-    df_filtrado['Marcar_Como_Emprestimo'] = edited_df['Marcar_Como_Emprestimo']
-    df.loc[df_filtrado.index, 'Marcar_Como_Emprestimo'] = df_filtrado['Marcar_Como_Emprestimo']
+    if modo_visualizacao == "Editar":
+        edited_df = st.data_editor(
+            df_exibir,
+            column_config={
+                "Marcar_Como_Emprestimo": st.column_config.CheckboxColumn(
+                    "É pagamento de empréstimo?", default=False
+                ),
+                "Valor (R$) - BR": st.column_config.TextColumn(
+                    "Valor (R$)", disabled=True
+                )
+            },
+            num_rows="dynamic",
+            use_container_width=True,
+            key="editor_transacoes"
+        )
+        # Atualiza a coluna de marcação no DataFrame original
+        df_filtrado['Marcar_Como_Emprestimo'] = edited_df['Marcar_Como_Emprestimo']
+        df.loc[df_filtrado.index, 'Marcar_Como_Emprestimo'] = df_filtrado['Marcar_Como_Emprestimo']
+    else:
+        st.dataframe(df_exibir, use_container_width=True)
+
     df_marcado = df[df["Marcar_Como_Emprestimo"] == True].copy()
     if not df_marcado.empty and 'Contrato' not in df_marcado.columns:
         df_marcado['Contrato'] = ""
@@ -215,8 +253,8 @@ def exibir_transacoes():
         st.markdown(f"#### Contrato {contrato_num}")
         df_contrato = df[df['Contrato'] == contrato_num].copy()
         if 'Data' in df_contrato.columns:
-            df_contrato['Data'] = pd.to_datetime(df_contrato['Data'], errors='coerce')
-            df_contrato = df_contrato.sort_values('Data')
+            df_contrato['Data_dt'] = pd.to_datetime(df_contrato['Data'], format='%d/%m/%Y', errors='coerce')
+            df_contrato = df_contrato.sort_values('Data_dt').drop(columns=['Data_dt'])
         colunas_tabela = [
             'Arquivo', 'Data', 'Valor (R$) - BR', 'Num Doc', 'Tipo', 'Banco', 'Conta', 'Descrição'
         ]
