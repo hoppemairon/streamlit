@@ -172,3 +172,7 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Ignorar páginas que não devem ir para produção
+pages/97_Comparativo_API_Netunna_Argo.py
+pages/99_Mapeamento_Operadoras.py

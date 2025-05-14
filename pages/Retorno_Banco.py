@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import io
 
-st.set_page_config(page_title="Leitor CNAB240 .RET", layout="centered")
+st.set_page_config(page_title="Leitor CNAB240 .RET", layout="wide")
 st.title("📄 Leitor de Arquivo CNAB240 (.RET)")
 
 st.markdown("Faça o upload de um arquivo `.RET` (CNAB240) para extrair os dados de **pagamentos (Segmento J)** e gerar um arquivo Excel.")
@@ -95,6 +95,7 @@ def ler_cnab240_segmento_j(conteudo_arquivo):
             nome_favorecido = linha[61:90].strip()
             data_pagamento = linha[91:100]
             valor = linha[101:114].strip()
+            valor_pago = linha[27:36].strip()
             codigo_pagamento = linha[230:235].strip()
             descricao_confirmacao = codigo_ocorrencias.get(codigo_pagamento, codigo_pagamento)
 
@@ -111,7 +112,8 @@ def ler_cnab240_segmento_j(conteudo_arquivo):
             registros.append({
                 'Favorecido': nome_favorecido,
                 'Data Pagamento': data_formatada,
-                'Valor (R$)': f"{valor_formatado:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
+                #'Valor (R$)': f"{valor_formatado:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
+                'Valor Pago (R$)': f"{int(valor_pago) / 100:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
                 'Codigo':  codigo_pagamento,
                 'Descrição': descricao_confirmacao
             })
