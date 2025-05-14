@@ -106,8 +106,13 @@ def carregar_adquirentes_bandeiras():
     return adquirentes_df, bandeiras_df
 
 def save_json(data, folder_path, empresa_codigo, date_str):
+    # Se rodar no Cloud ou pasta inválida, forçar pasta segura
+    if not os.path.isdir(folder_path) or "mount" in os.getcwd():
+        folder_path = os.path.join(".", "downloads_netunna")
+
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
+
     file_path = os.path.join(folder_path, f"ListaVendasEmpresa{empresa_codigo}_{date_str}.json")
     with open(file_path, 'w') as f:
         json.dump(data, f, indent=4)
