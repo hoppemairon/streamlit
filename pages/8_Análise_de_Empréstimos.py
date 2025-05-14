@@ -37,7 +37,7 @@ def carregar_dados_ofx(uploaded_files):
             st.error(f"Erro ao processar {file.name}: {e}")
     df = pd.DataFrame(todas_transacoes)
     # Remove possíveis duplicidades
-    colunas_unicas = ['Arquivo', 'Data', 'Descrição', 'Valor (R$)', 'Num Doc']
+    colunas_unicas = ['Data', 'Descrição', 'Valor (R$)', 'Num Doc']
     colunas_unicas = [col for col in colunas_unicas if col in df.columns]
     if colunas_unicas:
         df = df.drop_duplicates(subset=colunas_unicas, keep='first')
