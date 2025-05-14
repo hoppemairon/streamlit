@@ -13,3 +13,4 @@ streamlit_authenticator==0.4.2
 streamlit
 pandas
 openpyxl
+tabulate

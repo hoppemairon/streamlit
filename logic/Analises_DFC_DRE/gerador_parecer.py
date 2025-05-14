@@ -42,24 +42,48 @@ def extrair_metricas_principais(df: pd.DataFrame) -> Dict[str, pd.Series]:
     
     return metricas
 
-def calcular_indicadores(metricas: Dict[str, pd.Series]) -> Dict[str, float]:
-    """Calcula indicadores financeiros adicionais."""
-    indicadores = {
-        "receita_media": metricas["total_receita"].mean(),
-        "despesa_media": metricas["total_despesa"].mean(),
-        "resultado_medio": metricas["resultado"].mean(),
-        "margem_media": (metricas["resultado"] / metricas["total_receita"]).mean() * 100,
-        "tendencia_receita": np.polyfit(range(len(metricas["total_receita"])), metricas["total_receita"], 1)[0],
-        "tendencia_despesa": np.polyfit(range(len(metricas["total_despesa"])), metricas["total_despesa"], 1)[0],
-        "tendencia_resultado": np.polyfit(range(len(metricas["resultado"])), metricas["resultado"], 1)[0],
-        "volatilidade_resultado": metricas["resultado"].std() / abs(metricas["resultado"].mean()) if metricas["resultado"].mean() != 0 else 0,
-    }
-    
+def calcular_indicadores(metricas):
+    indicadores = {}
+
+    # Médias
+    indicadores["receita_media"] = metricas["total_receita"].mean()
+    indicadores["despesa_media"] = metricas["total_despesa"].mean()
+    indicadores["resultado_medio"] = metricas["resultado"].mean()
+
+    # Margem média
+    if indicadores["receita_media"] != 0:
+        indicadores["margem_media"] = (indicadores["resultado_medio"] / indicadores["receita_media"]) * 100
+    else:
+        indicadores["margem_media"] = 0
+
+    # Volatilidade
+    if indicadores["resultado_medio"] != 0:
+        indicadores["volatilidade_resultado"] = metricas["resultado"].std() / abs(indicadores["resultado_medio"])
+    else:
+        indicadores["volatilidade_resultado"] = 0
+
+    # Tendências
+    for key, name in [("total_receita", "tendencia_receita"),
+                       ("total_despesa", "tendencia_despesa"),
+                       ("resultado", "tendencia_resultado")]:
+        try:
+            x = np.arange(len(metricas[key]))
+            y = np.array(metricas[key], dtype=np.float64)
+            if len(y) >= 2 and np.isfinite(y).all():
+                indicadores[name] = np.polyfit(x, y, 1)[0]
+            else:
+                indicadores[name] = np.nan
+        except Exception:
+            indicadores[name] = np.nan
+
+    # Estoque (se existir)
     if "estoque" in metricas:
         indicadores["estoque_medio"] = metricas["estoque"].mean()
-        indicadores["tendencia_estoque"] = np.polyfit(range(len(metricas["estoque"])), metricas["estoque"], 1)[0]
-        indicadores["giro_estoque"] = metricas["total_receita"].sum() / metricas["estoque"].mean() if metricas["estoque"].mean() != 0 else 0
-    
+        if indicadores["estoque_medio"] != 0:
+            indicadores["giro_estoque"] = metricas["total_receita"].sum() / indicadores["estoque_medio"]
+        else:
+            indicadores["giro_estoque"] = np.nan
+
     return indicadores
 
 def exibir_metricas_principais(metricas: Dict[str, pd.Series], indicadores: Dict[str, float]):
@@ -136,16 +160,20 @@ def criar_grafico_resultado(metricas: Dict[str, pd.Series]) -> go.Figure:
     
     # Adiciona linha de tendência
     x_range = list(range(len(resultado)))
-    z = np.polyfit(x_range, resultado.values, 1)
-    p = np.poly1d(z)
-    
-    fig.add_trace(go.Scatter(
-        x=resultado.index,
-        y=p(x_range),
-        mode='lines',
-        name='Tendência',
-        line=dict(color='#E74C3C', width=2, dash='dash')
-    ))
+    y = resultado.values
+
+    if len(y) >= 2 and np.isfinite(y).all():
+        z = np.polyfit(x_range, y, 1)
+        p = np.poly1d(z)
+        fig.add_trace(go.Scatter(
+            x=resultado.index,
+            y=p(x_range),
+            mode='lines',
+            name='Tendência',
+            line=dict(color='#E74C3C', width=2, dash='dash')
+        ))
+    else:
+        st.warning("Não foi possível calcular a tendência do resultado (dados insuficientes ou inválidos).")
     
     # Adiciona linha de zero
     fig.add_shape(
@@ -373,7 +401,7 @@ def exibir_recomendacoes(insights: Dict[str, Dict], indicadores: Dict[str, float
     else:
         st.markdown("- Continue monitorando os indicadores financeiros e mantenha as boas práticas de gestão.")
 
-def gerar_parecer_automatico(path_fluxo="./logic/CSVs/transacoes_numericas.xlsx"):
+def gerar_parecer_automatico(df):
     """Função principal que gera o parecer financeiro automático."""
     st.header("📄 Diagnóstico Financeiro Interativo")
     
@@ -381,11 +409,6 @@ def gerar_parecer_automatico(path_fluxo="./logic/CSVs/transacoes_numericas.xlsx"
     hoje = datetime.now()
     periodo_options = ["Últimos 3 meses", "Últimos 6 meses", "Último ano", "Todo o período"]
     periodo_selecionado = st.selectbox("Selecione o período para análise:", periodo_options, index=3)
-    
-    # Carregar dados
-    df = carregar_dados(path_fluxo)
-    if df is None:
-        return
     
     # Filtrar por período selecionado
     if periodo_selecionado != "Todo o período":

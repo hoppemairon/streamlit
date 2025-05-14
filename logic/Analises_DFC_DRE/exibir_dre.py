@@ -173,17 +173,19 @@ def criar_grafico_dre(dre: pd.DataFrame) -> go.Figure:
     
     return fig
 
-def exibir_dre(path_fluxo="./logic/CSVs/transacoes_numericas.xlsx", path_plano="./logic/CSVs/plano_de_contas.csv"):
+def exibir_dre(df_fluxo=None, path_fluxo="./logic/CSVs/transacoes_numericas.xlsx", path_plano="./logic/CSVs/plano_de_contas.csv"):
     """Função principal que exibe o DRE no Streamlit."""
     st.markdown("## 📊 Demonstrativo de Resultados (DRE)")
-    
-    # Carregar dados
-    df_fluxo, plano = carregar_dados(path_fluxo, path_plano)
-    if df_fluxo is None or plano is None:
-        return
-    
+
+    # Se não vier DataFrame, carrega do Excel
+    if df_fluxo is None:
+        df_fluxo, _ = carregar_dados(path_fluxo, path_plano)
+        if df_fluxo is None:
+            return
+
+    plano = pd.read_csv(path_plano)
     meses = df_fluxo.columns.tolist()
-    
+
     # Criar abas para diferentes visualizações
     tab1, tab2 = st.tabs(["Tabela DRE", "Visualização Gráfica"])
     

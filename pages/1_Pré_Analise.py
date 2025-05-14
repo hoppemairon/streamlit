@@ -491,9 +491,9 @@ if st.session_state.df_transacoes_total is not None:
         
         if st.button("📊 Gerar DRE", key="btn_dre"):
             with st.spinner("Gerando DRE... ⏳"):
-                resultado_dre = exibir_dre()
-                
-                # Salvar resultado para uso na análise GPT
+                resultado_fluxo = exibir_fluxo_caixa(df_transacoes_total)
+                resultado_dre = exibir_dre(df_fluxo=resultado_fluxo)
+                st.session_state.resultado_fluxo = resultado_fluxo
                 st.session_state.resultado_dre = resultado_dre
         
         # if st.button("🧾 Gerar Parecer Diagnóstico", key="btn_parecer"):
@@ -505,7 +505,9 @@ if st.session_state.df_transacoes_total is not None:
         
         if st.button("🧾 Gerar Parecer Diagnóstico", key="btn_parecer"):
             with st.spinner("Gerando parecer diagnóstico... ⏳"):
-                gerar_parecer_automatico()
+                df_transacoes_total = st.session_state.df_transacoes_total
+                resultado_fluxo = st.session_state.get("resultado_fluxo", exibir_fluxo_caixa(df_transacoes_total))
+                gerar_parecer_automatico(resultado_fluxo)
 
     with tab6:
         st.header("🤖 Análise GPT - Parecer Financeiro Inteligente")
@@ -524,8 +526,8 @@ if st.session_state.df_transacoes_total is not None:
             else:
                 with st.spinner("Gerando parecer financeiro com inteligência artificial... ⏳"):
                     # Verificar se já temos os resultados de DRE e fluxo de caixa
-                    resultado_dre = st.session_state.get("resultado_dre", exibir_dre())
                     resultado_fluxo = st.session_state.get("resultado_fluxo", exibir_fluxo_caixa(df_transacoes_total))
+                    resultado_dre = st.session_state.get("resultado_dre", exibir_dre(df_fluxo=resultado_fluxo))
                     
                     parecer = analisar_dfs_com_gpt(resultado_dre, resultado_fluxo, descricao_empresa)
                 
