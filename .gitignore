@@ -176,3 +176,4 @@ cython_debug/
 
 # Ignorar páginas que não devem ir para produção
 pages/99_Mapeamento_Operadoras.py
+pages/98_Comparativo_API_Netunna_Argo.py
