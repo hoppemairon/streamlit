@@ -65,7 +65,7 @@ if st.session_state['df_argo'] is not None and st.session_state['df_netunna'] is
             id_empresa_netunna = empresa_row['empresa_netunna_id'].values[0]
 
             vendas_argo = st.session_state['df_argo'][st.session_state['df_argo']['idempresa'] == id_empresa_argo].copy()
-            vendas_netunna = st.session_state['df_netunna'][st.session_state['df_netunna']['venda.empresa_codigo'] == id_empresa_netunna].copy()
+            vendas_netunna = st.session_state['df_netunna'][st.session_state['df_netunna']['empresa_codigo'] == id_empresa_netunna].copy()
 
             # Verificar se há vendas para a empresa selecionada
             if vendas_argo.empty and vendas_netunna.empty:
@@ -230,7 +230,7 @@ if 'comparativo' in st.session_state and st.session_state['comparativo'] is not 
                         id_empresa_netunna = empresa_row['empresa_netunna_id'].values[0]
                         
                         vendas_netunna_data = st.session_state['df_netunna'][
-                            st.session_state['df_netunna']['venda.empresa_codigo'] == id_empresa_netunna
+                            st.session_state['df_netunna']['empresa_codigo'] == id_empresa_netunna
                         ].copy()
                         
                         vendas_netunna_data['data_dia'] = pd.to_datetime(vendas_netunna_data['venda.venda_data'], errors='coerce').dt.date
