@@ -89,7 +89,7 @@ def marcar_emprestimos():
     modo_visualizacao = st.radio(
         "Escolha o modo de visualização:",
         options=["Editar", "Ordenar"],
-        index=0,
+        index=1,
         horizontal=True
     )
     col1, col2 = st.columns(2)
