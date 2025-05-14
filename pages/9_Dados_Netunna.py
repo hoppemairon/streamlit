@@ -256,31 +256,33 @@ if st.button("Buscar dados"):
     else:
         st.warning("Colunas necessárias para o resumo não encontradas no DataFrame.")
 
-    import io
-    import zipfile
 
-    if 'json_arquivos' in st.session_state and st.session_state['json_arquivos']:
-        arquivos = st.session_state['json_arquivos']
-        st.subheader("Download dos Arquivos Netunna:")
+# --- Bloco de download dos arquivos Netunna (fora do botão) ---
+import io
+import zipfile
 
-        if len(arquivos) == 1:
-            arquivo = arquivos[0]
-            st.download_button(
-                label=f"📥 Baixar Empresa {arquivo['empresa']} - {arquivo['data']}.json",
-                data=arquivo['bytes'],
-                file_name=f"ListaVendasEmpresa{arquivo['empresa']}_{arquivo['data']}.json",
-                mime="application/json"
-            )
-        elif len(arquivos) > 1:
-            zip_buffer = io.BytesIO()
-            with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zip_file:
-                for arquivo in arquivos:
-                    filename = f"ListaVendasEmpresa{arquivo['empresa']}_{arquivo['data']}.json"
-                    zip_file.writestr(filename, arquivo["bytes"])
-            zip_buffer.seek(0)
-            st.download_button(
-                label="📥 Baixar Todos Arquivos (.zip)",
-                data=zip_buffer,
-                file_name="Arquivos_Netunna.zip",
-                mime="application/zip"
-            )
+if 'json_arquivos' in st.session_state and st.session_state['json_arquivos']:
+    arquivos = st.session_state['json_arquivos']
+    st.subheader("Download dos Arquivos Netunna:")
+
+    if len(arquivos) == 1:
+        arquivo = arquivos[0]
+        st.download_button(
+            label=f"📥 Baixar Empresa {arquivo['empresa']} - {arquivo['data']}.json",
+            data=arquivo['bytes'],
+            file_name=f"ListaVendasEmpresa{arquivo['empresa']}_{arquivo['data']}.json",
+            mime="application/json"
+        )
+    elif len(arquivos) > 1:
+        zip_buffer = io.BytesIO()
+        with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zip_file:
+            for arquivo in arquivos:
+                filename = f"ListaVendasEmpresa{arquivo['empresa']}_{arquivo['data']}.json"
+                zip_file.writestr(filename, arquivo["bytes"])
+        zip_buffer.seek(0)
+        st.download_button(
+            label="📥 Baixar Todos Arquivos (.zip)",
+            data=zip_buffer,
+            file_name="Arquivos_Netunna.zip",
+            mime="application/zip"
+        )
