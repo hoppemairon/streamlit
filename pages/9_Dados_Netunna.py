@@ -105,18 +105,18 @@ def carregar_adquirentes_bandeiras():
     adquirentes_df = pd.DataFrame(adquirentes_json["data"]).rename(columns={"id": "adquirente_id", "name": "adquirente_nome"})
     return adquirentes_df, bandeiras_df
 
-def save_json(data, folder_path, empresa_codigo, date_str):
-    # Se rodar no Cloud ou pasta inválida, forçar pasta segura
-    if not os.path.isdir(folder_path) or "mount" in os.getcwd():
-        folder_path = os.path.join(".", "downloads_netunna")
+def save_json(data, empresa_codigo, date_str):
+    import io
+    json_bytes = io.BytesIO()
+    json_bytes.write(json.dumps(data, indent=4).encode('utf-8'))
+    json_bytes.seek(0)
 
-    if not os.path.exists(folder_path):
-        os.makedirs(folder_path)
-
-    file_path = os.path.join(folder_path, f"ListaVendasEmpresa{empresa_codigo}_{date_str}.json")
-    with open(file_path, 'w') as f:
-        json.dump(data, f, indent=4)
-    st.success(f"Arquivo salvo em: {file_path}")
+    st.download_button(
+        label=f"📥 Baixar ListaVendasEmpresa{empresa_codigo}_{date_str}.json",
+        data=json_bytes,
+        file_name=f"ListaVendasEmpresa{empresa_codigo}_{date_str}.json",
+        mime="application/json"
+    )
 
 # --- INTERFACE STREAMLIT ---
 st.header("Consulta de Dados - Netunna (TeiaCard)")
@@ -151,15 +151,6 @@ empresas_selecionadas = st.multiselect(
 if not empresas_selecionadas:
     st.warning("Selecione pelo menos uma empresa.")
     st.stop()
-
-if 'folder_path' not in st.session_state:
-    st.session_state['folder_path'] = ""
-
-st.session_state['folder_path'] = st.text_input(
-    "Digite o caminho da pasta para salvar os arquivos JSON:",
-    value=st.session_state['folder_path'],
-    key="folder_path_input"
-)
 
 periodo = st.date_input(
     "Período (Data inicial e final)",
@@ -196,7 +187,7 @@ if st.button("Buscar dados"):
             if dados_dia:
                 for item in dados_dia:
                     item['data_consulta'] = data_api.strftime("%d/%m/%Y")
-                save_json(dados_dia, st.session_state['folder_path'], empresa_codigo, data_str_api)
+                save_json(dados_dia, empresa_codigo, data_str_api)
                 dados_total.extend(dados_dia)
             contador_requisicoes += 1
             progress_bar.progress(contador_requisicoes / total_requisicoes)
