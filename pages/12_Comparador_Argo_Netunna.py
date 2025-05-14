@@ -69,7 +69,11 @@ if st.session_state['df_argo'] is not None and st.session_state['df_netunna'] is
             id_empresa_netunna = empresa_row['empresa_netunna_id'].values[0]
 
             vendas_argo = st.session_state['df_argo'][st.session_state['df_argo']['idempresa'] == id_empresa_argo].copy()
-            vendas_netunna = st.session_state['df_netunna'][st.session_state['df_netunna']['empresa_codigo'] == id_empresa_netunna].copy()
+            if 'empresa_codigo' not in st.session_state['df_netunna'].columns:
+                st.error("❌ A coluna 'empresa_codigo' não existe em df_netunna. Verifique a importação dos dados.")
+                vendas_netunna = pd.DataFrame()  # cria DataFrame vazio para evitar erro
+            else:
+                vendas_netunna = st.session_state['df_netunna'][st.session_state['df_netunna']['empresa_codigo'] == id_empresa_netunna].copy()
 
             # Verificar se há vendas para a empresa selecionada
             if vendas_argo.empty and vendas_netunna.empty:
