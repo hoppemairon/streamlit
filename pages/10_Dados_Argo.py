@@ -41,26 +41,18 @@ def to_dataframe_argo(dados):
         return pd.DataFrame()
     return pd.DataFrame(dados)
 
-def save_json(data, folder_path, date_str):
-    if not os.path.exists(folder_path):
-        os.makedirs(folder_path)
-    file_path = os.path.join(folder_path, f"VendasCartoesArgo - {date_str}.json")
-    with open(file_path, 'w') as f:
-        json.dump(data, f, indent=4)
-    st.success(f"Arquivo salvo em: {file_path}")
+def save_json(data, date_str):
+    json_data = json.dumps(data, indent=4).encode('utf-8')
+    if 'json_arquivos_argo' not in st.session_state:
+        st.session_state['json_arquivos_argo'] = []
+    st.session_state['json_arquivos_argo'].append(
+        {"data": date_str, "bytes": json_data}
+    )
 
 # --- INTERFACE STREAMLIT ---
 st.set_page_config(page_title="Consulta de Dados - Argo (TeiaCard)", layout="wide")
 st.header("Consulta de Dados - Argo (TeiaCard)")
 
-if 'folder_path' not in st.session_state:
-    st.session_state['folder_path'] = ""
-
-st.session_state['folder_path'] = st.text_input(
-    "Digite o caminho da pasta para salvar os arquivos JSON (deixe vazio para não salvar):",
-    value=st.session_state['folder_path'],
-    key="folder_path_input"
-)
 
 # 1. Autenticação
 token = get_token_argo()
@@ -98,8 +90,7 @@ if st.button("Buscar dados"):
             for item in dados_dia:
                 item['data_consulta'] = data_api.strftime("%d/%m/%Y")
             dados_total.extend(dados_dia)
-            if st.session_state['folder_path']:
-                save_json(dados_dia, st.session_state['folder_path'], data_api.strftime("%Y%m%d"))
+            save_json(dados_dia, data_api.strftime("%Y%m%d"))
         progress_bar.progress((i + 1) / total_dias)
         data_atual += timedelta(days=1)
 
@@ -190,3 +181,33 @@ if isinstance(df_argo, pd.DataFrame) and not df_argo.empty:
         st.warning("Colunas necessárias para o detalhamento não encontradas no DataFrame ou nenhum dado filtrado.")
 else:
     st.info("Realize uma busca para visualizar os dados.")
+
+# --- Download dos arquivos JSON gerados ---
+import io
+import zipfile
+
+if 'json_arquivos_argo' in st.session_state and st.session_state['json_arquivos_argo']:
+    arquivos = st.session_state['json_arquivos_argo']
+    st.subheader("Download dos Arquivos Argo:")
+
+    if len(arquivos) == 1:
+        arquivo = arquivos[0]
+        st.download_button(
+            label=f"📥 Baixar Dados - {arquivo['data']}.json",
+            data=arquivo['bytes'],
+            file_name=f"VendasCartoesArgo - {arquivo['data']}.json",
+            mime="application/json"
+        )
+    elif len(arquivos) > 1:
+        zip_buffer = io.BytesIO()
+        with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zip_file:
+            for arquivo in arquivos:
+                filename = f"VendasCartoesArgo - {arquivo['data']}.json"
+                zip_file.writestr(filename, arquivo["bytes"])
+        zip_buffer.seek(0)
+        st.download_button(
+            label="📥 Baixar Todos Arquivos (.zip)",
+            data=zip_buffer,
+            file_name="Arquivos_Argo.zip",
+            mime="application/zip"
+        )
