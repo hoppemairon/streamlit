@@ -112,7 +112,7 @@ def ler_cnab240_segmento_j(conteudo_arquivo):
             registros.append({
                 'Favorecido': nome_favorecido,
                 'Data Pagamento': data_formatada,
-                'Valor (R$)': f"{valor_formatado:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
+                #'Valor (R$)': f"{valor_formatado:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
                 'Valor Pago (R$)': f"{int(valor_pago) / 100:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
                 'Codigo':  codigo_pagamento,
                 'Descrição': descricao_confirmacao
