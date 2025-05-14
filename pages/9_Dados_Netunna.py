@@ -5,12 +5,16 @@ from datetime import datetime, date, timedelta
 import time
 import json
 import os
+from dotenv import load_dotenv
+
+# Carrega variáveis de ambiente
+load_dotenv()
 
 # --- CREDENCIAIS (apenas para testes locais) ---
-CLIENT_ID = "2"
-CLIENT_SECRET = "KZ00QSA1GPBqBlHsArhVlHLSyHTg6srmoqUCKb8c"
-USERNAME = "admin@postosrota.com"
-PASSWORD = "p!Rt@25"
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+USERNAME = os.getenv("USERNAME")
+PASSWORD = os.getenv("PASSWORD")
 
 # --- Funções auxiliares ---
 def get_token():
@@ -41,9 +45,21 @@ def get_empresas(token):
 def get_parcelas(token, tipo, data_api, empresa_codigo):
     url = f'https://api.saferedi.nteia.com/v1/retorno/parcelas?tipo={tipo}&data={data_api}&empresa_codigo={empresa_codigo}'
     headers = {"Authorization": f"Bearer {token}"}
-    r = requests.get(url, headers=headers)
+    max_retries = 3
+    retries = 0
+    while retries <= max_retries:
+        r = requests.get(url, headers=headers)
+        if r.status_code == 200:
+            break
+        elif r.status_code == 429:
+            retries += 1
+            wait_time = 10 * retries
+            st.warning(f"Erro 429 (rate limit). Tentando novamente em {wait_time} segundos... (tentativa {retries}/{max_retries})")
+            time.sleep(wait_time)
+        else:
+            st.error(f"Erro na requisição: {r.status_code}")
+            return []
     if r.status_code != 200:
-        st.error(f"Erro na requisição: {r.status_code}")
         return []
     result = r.json()
     total_paginas = result['pagination']['total_pages']
@@ -79,39 +95,67 @@ def to_dataframe(dados):
         return pd.DataFrame()
     return pd.json_normalize(dados)
 
-# --- Carregar arquivos de adquirentes e bandeiras ---
 def carregar_adquirentes_bandeiras():
     pasta_arquivos = os.path.join(".", "logic", "ArquivosNetunna")
-    # Bandeiras
     with open(os.path.join(pasta_arquivos, "ListaBandeiras - TeiaCard.json"), encoding="utf-8") as f:
         bandeiras_json = json.load(f)
     bandeiras_df = pd.DataFrame(bandeiras_json["data"]).rename(columns={"id": "bandeira_id", "name": "bandeira_nome"})
-    # Adquirentes
     with open(os.path.join(pasta_arquivos, "ListaAdquirentes - TeiaCard.json"), encoding="utf-8") as f:
         adquirentes_json = json.load(f)
     adquirentes_df = pd.DataFrame(adquirentes_json["data"]).rename(columns={"id": "adquirente_id", "name": "adquirente_nome"})
     return adquirentes_df, bandeiras_df
 
-# --- INTERFACE STREAMLIT ---
+def save_json(data, folder_path, empresa_codigo, date_str):
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+    file_path = os.path.join(folder_path, f"ListaVendasEmpresa{empresa_codigo}_{date_str}.json")
+    with open(file_path, 'w') as f:
+        json.dump(data, f, indent=4)
+    st.success(f"Arquivo salvo em: {file_path}")
 
+# --- INTERFACE STREAMLIT ---
 st.header("Consulta de Dados - Netunna (TeiaCard)")
 
 if not validar_arquivos():
     st.stop()
 
-# 1. Autenticação
-token = get_token()
-if not token:
-    st.stop()
 
-# 2. Seleção de parâmetros
-empresas_dict = get_empresas(token)
-if not empresas_dict:
-    st.stop()
+if 'token' not in st.session_state:
+    token = get_token()
+    if not token:
+        st.stop()
+    st.session_state['token'] = token
+else:
+    token = st.session_state['token']
+
+if 'empresas_dict' not in st.session_state:
+    empresas_dict = get_empresas(token)
+    if not empresas_dict:
+        st.stop()
+    st.session_state['empresas_dict'] = empresas_dict
+else:
+    empresas_dict = st.session_state['empresas_dict']
 
 tipo = st.selectbox("Tipo de requisição", ["venda", "ocorrencia", "baixa"])
 
-# Data inicial e final no formato brasileiro
+empresas_selecionadas = st.multiselect(
+    "Selecione as unidades (empresas)",
+    list(empresas_dict.keys())
+)
+
+if not empresas_selecionadas:
+    st.warning("Selecione pelo menos uma empresa.")
+    st.stop()
+
+if 'folder_path' not in st.session_state:
+    st.session_state['folder_path'] = ""
+
+st.session_state['folder_path'] = st.text_input(
+    "Digite o caminho da pasta para salvar os arquivos JSON:",
+    value=st.session_state['folder_path'],
+    key="folder_path_input"
+)
+
 periodo = st.date_input(
     "Período (Data inicial e final)",
     value=[date.today(), date.today()],
@@ -124,40 +168,42 @@ else:
     st.warning("Selecione o período desejado.")
     st.stop()
 
-empresa_nome = st.selectbox("Unidade (empresa)", list(empresas_dict.keys()))
-empresa_codigo = empresas_dict[empresa_nome]
-
 st.write(f"Período selecionado: {data_inicial.strftime('%d/%m/%Y')} até {data_final.strftime('%d/%m/%Y')}")
 
-# 3. Buscar dados
 if st.button("Buscar dados"):
     st.info("Aguarde! As consultas podem demorar alguns segundos para cada dia do período selecionado.")
     total_dias = (data_final - data_inicial).days + 1
+    total_requisicoes = total_dias * len(empresas_selecionadas)
+    contador_requisicoes = 0
+
     progress_bar = st.progress(0)
     dados_total = []
-    data_atual = data_inicial
+    for empresa_nome in empresas_selecionadas:
+        empresa_codigo = empresas_dict[empresa_nome]
+        st.info(f"Consultando dados para a empresa {empresa_nome}...")
 
-    for i in range(total_dias):
-        data_api = data_atual
-        data_str_api = data_api.strftime("%Y%m%d")
-        st.write(f"Consultando dados do dia {data_api.strftime('%d/%m/%Y')} ...")
-        dados_dia = get_parcelas(token, tipo, data_str_api, empresa_codigo)
-        if dados_dia:
-            for item in dados_dia:
-                item['data_consulta'] = data_api.strftime("%d/%m/%Y")
-            dados_total.extend(dados_dia)
-        progress_bar.progress((i + 1) / total_dias)
-        data_atual += timedelta(days=1)
-        time.sleep(10)  # Aguarda 10 segundos entre as requisições
+        data_atual = data_inicial
+        for i in range(total_dias):
+            data_api = data_atual
+            data_str_api = data_api.strftime("%Y%m%d")
+            st.write(f"[{empresa_nome}] Consultando dia {data_api.strftime('%d/%m/%Y')} ...")
+            dados_dia = get_parcelas(token, tipo, data_str_api, empresa_codigo)
+            if dados_dia:
+                for item in dados_dia:
+                    item['data_consulta'] = data_api.strftime("%d/%m/%Y")
+                save_json(dados_dia, st.session_state['folder_path'], empresa_codigo, data_str_api)
+                dados_total.extend(dados_dia)
+            contador_requisicoes += 1
+            progress_bar.progress(contador_requisicoes / total_requisicoes)
+            data_atual += timedelta(days=1)
+            time.sleep(10)
 
     df = to_dataframe(dados_total)
     if not df.empty:
         st.success(f"{len(df)} registros encontrados no período selecionado.")
 
-        # Carregar adquirentes e bandeiras
         adquirentes_df, bandeiras_df = carregar_adquirentes_bandeiras()
 
-        # Renomear colunas do DataFrame principal para bater com os merges
         colunas_renomear = {}
         if "venda.adquirente" in df.columns:
             colunas_renomear["venda.adquirente"] = "adquirente_id"
@@ -165,7 +211,6 @@ if st.button("Buscar dados"):
             colunas_renomear["venda.bandeira"] = "bandeira_id"
         df = df.rename(columns=colunas_renomear)
 
-        # Fazendo merge com adquirentes e bandeiras
         if 'adquirente_id' in df.columns:
             df = df.merge(adquirentes_df, on="adquirente_id", how="left")
         if 'bandeira_id' in df.columns:
@@ -174,13 +219,11 @@ if st.button("Buscar dados"):
         st.write("DataFrame com nomes de adquirente e bandeira:")
         st.dataframe(df)
 
-        # Salva o DataFrame no session_state para persistência entre interações
         st.session_state['df'] = df
 
     else:
         st.warning("Nenhum dado encontrado para o período selecionado.")
 
-    # 4. Resumo, filtro e gráfico (usando session_state)
     if 'df' in st.session_state and not st.session_state['df'].empty:
         df = st.session_state['df']
         colunas_necessarias = {'bandeira_nome', 'valor_bruto', 'valor_liquido', 'valor_liquido_original'}
@@ -202,7 +245,6 @@ if st.button("Buscar dados"):
             df_filtrado = df[df['bandeira_nome'] == bandeira_opcao]
             st.subheader(f"Detalhamento para a bandeira: {bandeira_opcao}")
 
-            # --- Seleção de colunas com pré-seleção ---
             colunas_disponiveis = list(df_filtrado.columns)
             colunas_pre_selecionadas = [
                 'bandeira_nome',
@@ -211,7 +253,6 @@ if st.button("Buscar dados"):
                 'valor_liquido',
                 'valor_liquido_original'
             ]
-            # Seleciona apenas as que existem no DataFrame
             colunas_default = [col for col in colunas_pre_selecionadas if col in colunas_disponiveis]
 
             colunas_escolhidas = st.multiselect(

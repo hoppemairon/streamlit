@@ -2,12 +2,18 @@ import streamlit as st
 import requests
 import pandas as pd
 from datetime import date, timedelta
+import os
+import json
+from dotenv import load_dotenv
+
+# Carrega variáveis de ambiente
+load_dotenv()
 
 # --- CREDENCIAIS ARGO ---
-ARGO_USER = "infra.milanezi"
-ARGO_PASS = "$HhhY3yDdfqFNRrq"
-ARGO_AUTH_URL = "https://toda-one-auth.argoservicos.com/api/v1/auth"
-ARGO_API_BASE = "http://rederota.ddns.me:60532/argoapi/"
+ARGO_USER = os.getenv("ARGO_USER")
+ARGO_PASS = os.getenv("ARGO_PASS")
+ARGO_AUTH_URL = os.getenv("ARGO_AUTH_URL")
+ARGO_API_BASE = os.getenv("ARGO_API_BASE")
 
 # --- Funções auxiliares ---
 def get_token_argo():
@@ -19,7 +25,6 @@ def get_token_argo():
     return r.json().get('access_token')
 
 def get_transacoes_argo(token, data_inicial, data_final):
-    # Datas no formato ddmmaaaa
     str_data_inicial = data_inicial.strftime("%d%m%Y")
     str_data_final = data_final.strftime("%d%m%Y")
     url = (f"{ARGO_API_BASE}transacoescartoes?"
@@ -36,9 +41,26 @@ def to_dataframe_argo(dados):
         return pd.DataFrame()
     return pd.DataFrame(dados)
 
+def save_json(data, folder_path, date_str):
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+    file_path = os.path.join(folder_path, f"VendasCartoesArgo - {date_str}.json")
+    with open(file_path, 'w') as f:
+        json.dump(data, f, indent=4)
+    st.success(f"Arquivo salvo em: {file_path}")
+
 # --- INTERFACE STREAMLIT ---
 st.set_page_config(page_title="Consulta de Dados - Argo (TeiaCard)", layout="wide")
 st.header("Consulta de Dados - Argo (TeiaCard)")
+
+if 'folder_path' not in st.session_state:
+    st.session_state['folder_path'] = ""
+
+st.session_state['folder_path'] = st.text_input(
+    "Digite o caminho da pasta para salvar os arquivos JSON (deixe vazio para não salvar):",
+    value=st.session_state['folder_path'],
+    key="folder_path_input"
+)
 
 # 1. Autenticação
 token = get_token_argo()
@@ -76,6 +98,8 @@ if st.button("Buscar dados"):
             for item in dados_dia:
                 item['data_consulta'] = data_api.strftime("%d/%m/%Y")
             dados_total.extend(dados_dia)
+            if st.session_state['folder_path']:
+                save_json(dados_dia, st.session_state['folder_path'], data_api.strftime("%Y%m%d"))
         progress_bar.progress((i + 1) / total_dias)
         data_atual += timedelta(days=1)
 

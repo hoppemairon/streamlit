@@ -1,5 +1,12 @@
-streamlit
-pandas
-openpyxl
-ofxparse
-chardet
+chardet==5.2.0
+numpy==2.2.5
+ofxparse==0.21
+openai==1.78.1
+pandas==2.2.3
+pdfplumber==0.11.6
+plotly==6.0.1
+python-dotenv==1.1.0
+python_dateutil==2.9.0.post0
+Requests==2.32.3
+streamlit==1.45.0
+streamlit_authenticator==0.4.2
