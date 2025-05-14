@@ -390,12 +390,16 @@ def carregar_arquivos_upload(arquivos, tipo):
     if arquivos:
         for file in arquivos:
             dados = json.load(file)
-            if isinstance(dados, list):
-                df = pd.DataFrame(dados)
-            elif isinstance(dados, dict):
-                df = pd.DataFrame([dados])
-            else:
-                continue
-            df['source'] = tipo
-            dataframes.append(df)
+            if tipo == 'argo':
+                df = pd.DataFrame(dados if isinstance(dados, list) else [dados])
+                dataframes.append(df)
+            elif tipo == 'netunna':
+                if isinstance(dados, list):
+                    for bloco in dados:
+                        if 'data' in bloco:
+                            df = pd.json_normalize(bloco['data'])
+                            dataframes.append(df)
+                elif 'data' in dados:
+                    df = pd.DataFrame(dados['data'])
+                    dataframes.append(df)
     return pd.concat(dataframes, ignore_index=True) if dataframes else pd.DataFrame()
