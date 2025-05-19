@@ -41,8 +41,8 @@ if st.button('🚀 Carregar Arquivos de Vendas', key='btn_carregar'):
         with st.spinner('🔄 Lendo vendas...'):
             st.session_state['df_argo'] = comparador.carregar_arquivos_upload(arquivos_argo, tipo='argo')
             st.session_state['df_netunna'] = comparador.carregar_arquivos_upload(arquivos_netunna, tipo='netunna')
-            st.write("📋 Colunas df_argo:", st.session_state['df_argo'].columns.tolist())
-            st.write("📋 Colunas df_netunna:", st.session_state['df_netunna'].columns.tolist())
+            #st.write("📋 Colunas df_argo:", st.session_state['df_argo'].columns.tolist())
+            #st.write("📋 Colunas df_netunna:", st.session_state['df_netunna'].columns.tolist())
 
         with st.spinner('🔄 Mapeando Empresas...'):
             st.session_state['mapeamento'] = mapeador.mapear_empresas_por_cnpj(
