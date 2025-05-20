@@ -36,6 +36,7 @@ def home():
         - Tradução automática dos IDs de bandeiras da Netunna para nomes amigáveis.
         - Melhorias na interface para acompanhamento do processo de carregamento.
 
+        ---
         ## Versão:    
         - **Versão 1.0** • Desenvolvedor: Mairon Hoppe • Última atualização: 20/05/2025
         """)
