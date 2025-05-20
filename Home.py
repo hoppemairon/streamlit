@@ -17,7 +17,7 @@ def home():
     st.markdown("""
     ## Bem-vindo ao Sistema Bancário MR
 
-    Este sistema foi desenvolvido para facilitar o processamento de arquivos bancários, integrando CNAB240, OFX e APIs externas como Netunna e Argo.
+    Este sistema foi desenvolvido para facilitar o processamento das APIs externas como Netunna e Argo.
 
     **Navegue pelo menu lateral para explorar as funcionalidades disponíveis.**
 
