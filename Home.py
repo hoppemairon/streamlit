@@ -22,16 +22,10 @@ def home():
     **Navegue pelo menu lateral para explorar as funcionalidades disponíveis.**
 
     ### Funcionalidades Principais:
-    - **Pré Análise:** Ferramentas para análise preliminar de dados OFX.
-    - **Leitura de Arquivos OFX:** Importação e extração de arquivos OFX.
-    - **Retorno Bancário:** Processamento e análise de retornos bancários.
-    - **Plano de Contas:** Gestão e organização de planos de contas para a Pré Análise.
-    - **Palavras Chaves:** Configuração de palavras-chave para categorização para a Pré Análise.
-    - **Análise de Empréstimos:** Avaliação de empréstimos.
     - **Dados Netunna e Argo:** Integração e comparação de dados externos.
 
     ### Atualizações:
-    - **Versão 2.0** • Última atualização: 14/05/2025
+    - **Versão 1.0** • Última atualização: 20/05/2025
     """)
 
 home()
