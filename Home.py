@@ -13,19 +13,32 @@ def set_page(page_name):
 
 # Páginas do sistema
 def home():
-    st.title("💼 Painel Principal - Sistema Bancário MR")
-    st.markdown("""
-    ## Bem-vindo ao Sistema Bancário MR
+        st.title("📊 Comparador de Vendas entre Netunna e Argo")
 
-    Este sistema foi desenvolvido para facilitar o processamento das APIs externas como Netunna e Argo.
+        st.markdown("""
+        ## Bem-vindo ao sistema de comparação entre APIs da Netunna e Argo
 
-    **Navegue pelo menu lateral para explorar as funcionalidades disponíveis.**
+        Esta aplicação foi desenvolvida para simplificar a integração, análise e validação de dados provenientes das plataformas **Netunna** e **Argo**.
 
-    ### Funcionalidades Principais:
-    - **Dados Netunna e Argo:** Integração e comparação de dados externos.
+        Utilize o **menu lateral** para acessar as diferentes funcionalidades disponíveis no sistema.
 
+        ---
+
+        ### 🔧 Funcionalidades Principais:
+        - **Busca via API:** Consulte e carregue dados diretamente das APIs da Netunna e Argo.
+        - **Comparativo de Transações:** Identifique diferenças e conciliação de vendas entre os sistemas.
+        - **Validação Manual:** Revise transações pendentes com opções de correção e justificativa.
+
+        ---
+
+        ### 🆕 Últimas Atualizações:
+        - Simulação de barra de progresso por dia nas requisições da Netunna e Argo.
+        - Tradução automática dos IDs de bandeiras da Netunna para nomes amigáveis.
+        - Melhorias na interface para acompanhamento do processo de carregamento.
+
+                    
+        - **Versão 1.0** • Desenvolvedor: Mairon Hoppe • Última atualização: 20/05/2025
+        """)
     ### Atualizações:
-    - **Versão 1.0** • Última atualização: 20/05/2025
-    """)
 
 home()
