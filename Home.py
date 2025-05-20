@@ -37,7 +37,7 @@ def home():
         - Melhorias na interface para acompanhamento do processo de carregamento.
 
         ---
-        ## Versão:    
+        #### Versão:    
         - **Versão 1.0** • Desenvolvedor: Mairon Hoppe • Última atualização: 20/05/2025
         """)
     ### Atualizações:
