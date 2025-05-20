@@ -11,6 +11,8 @@ from logic.ValidacaoArgoNetunna.Dados_Netunna import get_token as get_token_netu
 from logic.ValidacaoArgoNetunna.Dados_Argo import get_token_argo, get_transacoes_argo, to_dataframe_argo
 from logic.ValidacaoArgoNetunna.comparador_argo_netunna import comparar_vendas, gerar_sugestoes_relacionamentos_v2, resumo_por_status_valor
 from logic.ValidacaoArgoNetunna import fechamento_conciliador as fechamento
+from logic.ArquivosNetunna.bandeiras_netunna import BANDEIRAS_NETUNNA
+
 
 st.set_page_config(page_title="Comparador ARGO x Netunna", layout="wide")
 st.title('📊 Comparador de Vendas - ARGO x Netunna')
@@ -58,14 +60,32 @@ with abas[0]:
             data_atual = data_ini
             for i in range(total_dias):
                 # Corrige o desvio de um dia na Netunna
+                st.write(f"📅 Iniciando requisição da Netunna para o dia {data_atual.strftime('%d/%m/%Y')}")
                 data_api = (data_atual + timedelta(days=1)).strftime("%Y%m%d")
-                dados_dia = get_parcelas(token_netunna, "venda", data_api, id_empresa_netunna)
+                tentativas = 0
+                sucesso = False
+                while tentativas < 3 and not sucesso:
+                    try:
+                        dados_dia = get_parcelas(token_netunna, "venda", data_api, id_empresa_netunna)
+                        sucesso = True
+                    except Exception as e:
+                        tentativas += 1
+                        time.sleep(5)
+                        if tentativas == 3:
+                            st.warning(f"⚠️ Falha ao consultar a Netunna para a data {data_api}: {e}")
+                            dados_dia = []
                 if dados_dia:
+                    total_paginas = len(dados_dia) if isinstance(dados_dia, list) else 1
+                    barra_progresso = st.progress(0)
+                    st.write(f"📜 Total de Paginas {total_paginas}")
+                    for j in range(total_paginas):
+                        time.sleep(0.1)  # Simula tempo de processamento por página
+                        barra_progresso.progress((j + 1) / total_paginas)
                     for item in dados_dia:
                         item['data_consulta'] = data_atual.strftime("%d/%m/%Y")
                     dados_netunna.extend(dados_dia)
                 data_atual += timedelta(days=1)
-                time.sleep(0.5)
+                time.sleep(10)
             df_netunna = to_dataframe_netunna(dados_netunna)
             st.success(f"{len(df_netunna)} registros Netunna encontrados.")
 
@@ -77,6 +97,11 @@ with abas[0]:
             dados_argo = []
             data_atual = data_ini
             for i in range(total_dias):
+                st.write(f"📅 Iniciando requisição da Argo para o dia {data_atual.strftime('%d/%m/%Y')}")
+                progresso_argo = st.progress(0)
+                for j in range(5):  # simula progresso em 5 passos
+                    time.sleep(0.2)  # tempo visual para simular processamento
+                    progresso_argo.progress((j + 1) / 5)
                 dados_dia = get_transacoes_argo(token_argo, data_atual, data_atual)
                 if dados_dia:
                     for item in dados_dia:
@@ -249,7 +274,7 @@ with abas[1]:
                             - Data: `{row['datahora']}`
                             - Valor: `R$ {row['valor_netunna']:,.2f}`
                             - NSU: `{row['nsu_netunna']}`
-                            - Bandeira: `{row.get('bandeira_netunna', 'N/A')}`
+                            - Bandeira: `{BANDEIRAS_NETUNNA.get(int(row.get('bandeira_netunna')) if pd.notna(row.get('bandeira_netunna')) else -1, 'Desconhecida')}`
                             """)
 
                         decisao = st.radio(
