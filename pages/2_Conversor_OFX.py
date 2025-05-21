@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import io
-from extractors.ofx_extractor import extrair_lancamentos_ofx
+from extractors.ofx_extractor import extrair_lancamentos_ofx, remover_lancamentos_duplicados
 
 st.set_page_config(page_title="Conversor OFX", layout="wide")
 st.title("💸 Leitor de Arquivos OFX")
@@ -37,6 +37,9 @@ if uploaded_files:
         st.success(f"✅ {file.name} processado com sucesso (codificação: {encoding})")
         todas_transacoes.extend(transacoes)
 
+    # Remove duplicatas
+    todas_transacoes = remover_lancamentos_duplicados(todas_transacoes)
+
     # Monta o DataFrame
     df = pd.DataFrame(todas_transacoes)
 
@@ -52,7 +55,7 @@ if st.session_state.mensagens:
 
 # Exibe resultados
 if st.session_state.df_ofx is not None:
-    st.success(f"{len(st.session_state.df_ofx)} transações carregadas.")
+    st.success(f"{len(st.session_state.df_ofx)} transações carregadas (sem duplicatas).")
     st.dataframe(st.session_state.df_ofx, use_container_width=True)
 
     output = io.BytesIO()
