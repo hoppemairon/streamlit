@@ -3,6 +3,7 @@ import chardet
 import re
 from ofxparse import OfxParser
 import logging
+import unicodedata
 
 # Configuração de logging
 logging.basicConfig(level=logging.INFO)
@@ -225,3 +226,34 @@ def extrair_lancamentos_ofx(file, file_name):
     except Exception as e:
         logger.exception(f"Erro não tratado: {e}")
         return [], f"erro não tratado: {e}"
+    
+def normalizar_texto(texto):
+    """
+    Remove acentuação e normaliza espaços e caixa.
+    """
+    if not texto:
+        return ""
+    texto = texto.lower().strip()
+    texto = unicodedata.normalize('NFKD', texto)
+    texto = ''.join([c for c in texto if not unicodedata.combining(c)])
+    return re.sub(r'\s+', ' ', texto)
+
+def remover_lancamentos_duplicados(transacoes):
+    """
+    Remove lançamentos duplicados da lista de transações baseada em data, valor, tipo e descrição normalizada.
+    """
+    vistos = set()
+    transacoes_unicas = []
+
+    for t in transacoes:
+        chave = (
+            t.get("Data"),
+            round(float(t.get("Valor (R$)", 0)), 2),
+            t.get("Tipo"),
+            normalizar_texto(t.get("Descrição", ""))
+        )
+        if chave not in vistos:
+            vistos.add(chave)
+            transacoes_unicas.append(t)
+
+    return transacoes_unicas
