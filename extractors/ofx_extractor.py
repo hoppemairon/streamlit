@@ -226,7 +226,7 @@ def extrair_lancamentos_ofx(file, file_name):
     except Exception as e:
         logger.exception(f"Erro não tratado: {e}")
         return [], f"erro não tratado: {e}"
-    
+
 def normalizar_texto(texto):
     """
     Remove acentuação e normaliza espaços e caixa.
