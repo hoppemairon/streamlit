@@ -12,6 +12,7 @@ from logic.ValidacaoArgoNetunna.Dados_Argo import get_token_argo, get_transacoes
 from logic.ValidacaoArgoNetunna.comparador_argo_netunna import comparar_vendas, gerar_sugestoes_relacionamentos_v2, resumo_por_status_valor
 from logic.ValidacaoArgoNetunna import fechamento_conciliador as fechamento
 from logic.ArquivosNetunna.bandeiras_netunna import BANDEIRAS_NETUNNA
+from logic.ArquivosNetunna.adquirentes_netunna import ADQUIRENTES_NETUNNA
 
 
 st.set_page_config(page_title="Comparador ARGO x Netunna", layout="wide")
@@ -209,8 +210,8 @@ with abas[1]:
                                               value=f"R$ {valor_total_netunna:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
                                     with st.expander("Detalhes Netunna"):
                                         st.dataframe(
-                                            vendas_netunna_data[['venda.nsu', 'venda.venda_data', 'venda.valor_bruto', 'venda.bandeira']].rename(
-                                                columns={'venda.bandeira': 'id_bandeira'}
+                                            vendas_netunna_data[['venda.nsu', 'venda.venda_data', 'venda.valor_bruto', 'venda.bandeira', 'venda.adquirente.id']].rename(
+                                                columns={'venda.bandeira': 'id_bandeira', 'venda.adquirente.id': 'adquirente_id'}
                                             ).reset_index(drop=True),
                                             use_container_width=True
                                         )
@@ -274,6 +275,7 @@ with abas[1]:
                             - Data: `{row['datahora']}`
                             - Valor: `R$ {row['valor_netunna']:,.2f}`
                             - NSU: `{row['nsu_netunna']}`
+                            - Adquirente: `{ADQUIRENTES_NETUNNA.get(int(row.get('adquirente_netunna')) if pd.notna(row.get('adquirente_netunna')) else -1, 'Desconhecido')}`
                             - Bandeira: `{BANDEIRAS_NETUNNA.get(int(row.get('bandeira_netunna')) if pd.notna(row.get('bandeira_netunna')) else -1, 'Desconhecida')}`
                             """)
 

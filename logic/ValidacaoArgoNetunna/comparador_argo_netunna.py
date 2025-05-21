@@ -95,12 +95,12 @@ def comparar_vendas(df_argo, df_netunna):
         if 'venda.operadora' not in df_netunna.columns:
             df_netunna['venda.operadora'] = np.nan
 
-        df_netunna_prep = df_netunna[['venda.nsu', 'venda.venda_data', 'venda.valor_bruto', 'venda.bandeira', 'venda.operadora']].copy()
-        df_netunna_prep.columns = ['nsu_netunna', 'datahora', 'valor_netunna', 'bandeira_netunna', 'operadora_netunna']
+        df_netunna_prep = df_netunna[['venda.nsu', 'venda.venda_data', 'venda.valor_bruto', 'venda.bandeira', 'venda.operadora', 'venda.adquirente.id']].copy()
+        df_netunna_prep.columns = ['nsu_netunna', 'datahora', 'valor_netunna', 'bandeira_netunna', 'operadora_netunna', 'adquirente_netunna']
         df_netunna_prep['nsu_netunna'] = df_netunna_prep['nsu_netunna'].astype(str)
         df_netunna_prep['status'] = '⚠️ Só na Netunna'
     else:
-        df_netunna_prep = pd.DataFrame(columns=['nsu_netunna', 'datahora', 'valor_netunna', 'bandeira_netunna', 'operadora_netunna', 'status'])
+        df_netunna_prep[['datahora', 'nsu_netunna', 'valor_netunna', 'bandeira_netunna', 'operadora_netunna', 'adquirente_netunna', 'status']]
 
     # Padronizar NSUs para o mesmo tamanho (com zeros à esquerda)
     max_nsu_len = max(
@@ -164,6 +164,7 @@ def comparar_vendas(df_argo, df_netunna):
                 'nsu_netunna': candidato['nsu_netunna'],
                 'valor_netunna': candidato['valor_netunna'],
                 'bandeira_netunna': candidato.get('bandeira_netunna', np.nan),
+                'adquirente_netunna': candidato.get('adquirente_netunna', np.nan),
                 'operadora_netunna': candidato.get('operadora_netunna', np.nan),
                 'status': '⚠️ Possível Match Data+Valor'
             }
@@ -178,7 +179,7 @@ def comparar_vendas(df_argo, df_netunna):
     # -------------------------------------------
     # Garante que todos os DataFrames tenham as colunas finais
     colunas_finais = ['datahora', 'nsu_argo', 'valor_argo', 'formapagamento_argo', 
-                      'nsu_netunna', 'valor_netunna', 'bandeira_netunna', 'operadora_netunna', 'status']
+                      'nsu_netunna', 'valor_netunna', 'bandeira_netunna', 'operadora_netunna', 'status', 'adquirente_netunna']
     for df in [df_batido, df_argo_prep, df_netunna_prep]:
         for col in colunas_finais:
             if col not in df.columns:
@@ -188,10 +189,11 @@ def comparar_vendas(df_argo, df_netunna):
     # Unir todos os resultados
     # -------------------------------------------
     resultado = pd.concat([
-        df_batido[['datahora', 'nsu_argo', 'valor_argo', 'formapagamento_argo', 'nsu_netunna', 'valor_netunna', 'bandeira_netunna', 'operadora_netunna', 'status']],
+        df_batido[['datahora', 'nsu_argo', 'valor_argo', 'formapagamento_argo', 
+           'nsu_netunna', 'valor_netunna', 'bandeira_netunna', 'operadora_netunna', 'adquirente_netunna', 'status']],
         pd.DataFrame(possiveis_matches),
         df_argo_prep[['datahora', 'nsu_argo', 'valor_argo', 'formapagamento_argo', 'status']],
-        df_netunna_prep[['datahora', 'nsu_netunna', 'valor_netunna', 'bandeira_netunna', 'operadora_netunna', 'status']]
+        df_netunna_prep[['datahora', 'nsu_netunna', 'valor_netunna', 'bandeira_netunna', 'operadora_netunna', 'adquirente_netunna', 'status']]
     ], ignore_index=True)
 
     # Garantir colunas (caso ainda falte)
