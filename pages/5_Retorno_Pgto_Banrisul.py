@@ -1,6 +1,16 @@
 import streamlit as st
 import pandas as pd
 import io
+import unidecode
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+print(os.getenv("API_MR_URL"))
+print(os.getenv("API_MR_KEY"))
+
+from logic.Sistema_MR.API_MR import buscar_lancamentos_api
 
 st.set_page_config(page_title="Leitor CNAB240 .RET", layout="wide")
 st.title("📄 Leitor de Arquivo CNAB240 (.RET)")
@@ -152,6 +162,94 @@ if st.session_state.df_ret is not None:
         file_name="pagamentos_cnab240.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     )
+        # Expansor para análise adicional com API MR
+    with st.expander("🔍 Analisar com dados da API MR"):
+        EMPRESAS_MR = {
+            "GRUPO ROTA - ARARANGUA": "772644ba-3a49-4736-8443-f057581d6b39",
+            "GRUPO ROTA - TERRA DE AREIA": "4d49850f-ebf1-433d-a32a-527b54e856aa",
+            "GRUPO ROTA - CAMINHO DO SOL": "d5ecbd61-8d4a-4ac6-8cc9-7c4919ead401",
+            "GRUPO ROTA - JAGUARUNA": "149653c2-f107-4c60-aad0-b034789c8504",
+            "GRUPO ROTA - PARADOURO": "735b6b4e-5513-4bb5-a9c4-50d92462921d",
+            "GRUPO ROTA - SÃO PAULO": "1db3be97-a6d6-484a-b75b-fc1bdc6c487a",
+            "GRUPO ROTA - ELDORADO": "93f44c44-bfd4-417f-bad2-20933e5c0228",
+            "GRUPO ROTA - PINHEIRO MACHADO": "a13229ca-0f8a-442a-91ab-27e0adc1810b",
+            "GRUPO ROTA - SEBERI": "eb84222f-2e6b-4f68-8457-760d10e24043",
+            "GRUPO ROTA - POA IPIRANGA": "85d3091d-af31-4cb5-86fc-1558aaefa19b",
+            "GRUPO ROTA - CRISTAL": "7a078786-1d9e-4433-9d63-8dfc58130b5f",
+            "GRUPO ROTA - PORTO ALEGRE": "73a32cc3-d7ac-48d7-91d7-9046045d0bd7",
+            "GRUPO ROTA - PARADOURO REST.": "cad79622-124a-4dc0-9408-7da5227576f0",
+            "GRUPO ROTA - TRANSPORTADORA": "3885ddf8-f0ac-4468-98ab-97a248e29150"
+        }
+
+        empresa_nome = st.selectbox("Selecione a empresa (MR):", list(EMPRESAS_MR.keys()))
+        id_empresa = EMPRESAS_MR[empresa_nome]
+
+        api_url = os.getenv("API_MR_URL")
+        chave_api = os.getenv("API_MR_KEY")
+
+        if st.button("🔄 Buscar dados da MR"):
+            df_api_mr = buscar_lancamentos_api(ids_empresa=id_empresa, anos="2025")
+
+            if df_api_mr.empty or "data" not in df_api_mr.columns or "valor" not in df_api_mr.columns:
+                st.warning("⚠️ Nenhum dado útil retornado da API da MR ou estrutura inesperada.")
+            else:
+                st.success(f"{len(df_api_mr)} registros carregados da MR para a empresa selecionada.")
+                #st.dataframe(df_api_mr, use_container_width=True)
+
+                # 🔄 Cruzamento de dados
+                df_ret = st.session_state.df_ret.copy()
+                df_ret["Data"] = pd.to_datetime(df_ret["Data Pagamento"], dayfirst=True, errors="coerce").dt.date
+                df_ret["Valor Pago (R$)"] = df_ret["Valor Pago (R$)"].str.replace(".", "", regex=False).str.replace(",", ".").astype(float)
+
+                df_api_mr["data"] = pd.to_datetime(df_api_mr["data"], errors="coerce").dt.date
+                df_api_mr["valor"] = pd.to_numeric(df_api_mr["valor"], errors="coerce")
+
+                # 🧠 Cruzamento por nome (Favorecido vs. Contato MR)
+                st.subheader("🧠 Cruzamento por Nome (Favorecido vs. Contato MR)")
+
+                def normalizar_nome(texto):
+                    if not isinstance(texto, str):
+                        return ""
+                    return unidecode.unidecode(texto).lower().strip()
+
+                df_ret["nome_norm"] = df_ret["Favorecido"].apply(normalizar_nome)
+                df_api_mr["contato_norm"] = df_api_mr["contato"].apply(normalizar_nome)
+
+                resultados = []
+                for _, linha_ret in df_ret.iterrows():
+                    possiveis = df_api_mr[df_api_mr["contato_norm"].str.contains(linha_ret["nome_norm"], na=False)]
+                    if not possiveis.empty:
+                        linha_mr = possiveis.iloc[0]
+                        resultados.append({
+                            "Data": linha_ret["Data"].strftime("%d/%m/%Y"),
+                            "Descrição": linha_ret["Favorecido"],
+                            "Valor": linha_ret["Valor Pago (R$)"],
+                            "Contato": linha_mr["contato"],
+                            "Categoria": linha_mr.get("categoria", "")
+                        })
+                    else:
+                        resultados.append({
+                            "Data": linha_ret["Data"].strftime("%d/%m/%Y"),
+                            "Descrição": linha_ret["Favorecido"],
+                            "Valor": linha_ret["Valor Pago (R$)"],
+                            "Contato": "",
+                            "Categoria": ""
+                        })
+
+                df_fuzzy = pd.DataFrame(resultados)
+                st.dataframe(df_fuzzy, use_container_width=True)
+
+                output_fuzzy = io.BytesIO()
+                df_fuzzy.to_excel(output_fuzzy, index=False)
+                output_fuzzy.seek(0)
+
+                st.download_button(
+                    label="📥 Baixar Excel cruzado por nome",
+                    data=output_fuzzy,
+                    file_name="pagamentos_cruzados_por_nome.xlsx",
+                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                )
+
 
 # Botão limpar
 if st.session_state.df_ret is not None:
