@@ -14,3 +14,4 @@ streamlit
 pandas
 openpyxl
 tabulate
+unidecode
