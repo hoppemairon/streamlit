@@ -198,6 +198,7 @@ if st.session_state.df_ret is not None:
 
                 # 🔄 Cruzamento de dados
                 df_ret = st.session_state.df_ret.copy()
+                df_ret = df_ret[df_ret["Codigo"] == "BD"]
                 df_ret["Data"] = pd.to_datetime(df_ret["Data Pagamento"], dayfirst=True, errors="coerce").dt.date
                 df_ret["Valor Pago (R$)"] = df_ret["Valor Pago (R$)"].str.replace(".", "", regex=False).str.replace(",", ".").astype(float)
 
@@ -225,7 +226,7 @@ if st.session_state.df_ret is not None:
                             "Descrição": linha_ret["Favorecido"],
                             "Valor": linha_ret["Valor Pago (R$)"],
                             "Contato": linha_mr["contato"],
-                            "Categoria": linha_mr.get("categoria", "")
+                            "Categoria": linha_mr.get("categoria", "").split("-", 1)[-1].strip() if linha_mr.get("categoria") else ""
                         })
                     else:
                         resultados.append({
