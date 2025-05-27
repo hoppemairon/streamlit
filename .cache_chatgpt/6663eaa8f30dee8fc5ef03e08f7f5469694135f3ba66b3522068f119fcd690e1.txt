@@ -1,0 +1,83 @@
+# Análise Financeira: Empresa Milanezi & Rodrigues LTDA
+
+## Introdução
+
+A análise é baseada nos registros financeiros de 2024 fornecidos pela Milanezi & Rodrigues LTDA, uma empresa que presta serviços de apoio administrativo e programas de computador. Vamos avaliar vários indicadores de saúde financeira da empresa, identificar pontos de risco e oportunidade e fornecer um parecer técnico para a decisão de investidores e stakeholders.
+
+## Indicadores Financeiros
+
+### Indicadores de Liquidez
+- **Liquidez Corrente**:
+  - Fórmula: Ativo Circulante / Passivo Circulante
+  - Cálculo: 29.199,97 / 65.472,92 = 0,45
+  - Interpretação: A empresa tem R$0,45 disponíveis para cada R$1 de dívida de curto prazo, sugerindo uma liquidez bastante limitada.
+
+- **Liquidez Seca**:
+  - Fórmula: (Ativo Circulante - Estoques) / Passivo Circulante
+  - Cálculo: (29.199,97 - 0) / 65.472,92 = 0,45
+  - Interpretação: Igual à Liquidez Corrente, devido à ausência de estoques, indicando uma baixa capacidade de pagamento sem considerar vendas futuras.
+
+### Eficiência Operacional
+- **Giro do Ativo**:
+  - Fórmula: Receita Total / Ativo Total
+  - Cálculo: 716.970,07 / 468.258,07 = 1,53
+  - Interpretação: Cada R$1 de ativo foi utilizado para gerar R$1,53 de vendas, indicando boa eficiência.
+
+### Rentabilidade
+- **Margem Bruta**:
+  - Fórmula: (Receita Líquida - Custo dos Bens Vendidos) / Receita Líquida
+  - Cálculo: (636.135,63 - 0) / 636.135,63 = 100%
+  - Interpretação: Altamente positivo, indicando ausência de custo direto das vendas.
+  
+- **ROE (Retorno sobre o Patrimônio)**:
+  - Fórmula: Lucro Líquido / Patrimônio Líquido
+  - Cálculo: 361.147,00 / 31.566,81 = 1144,8%
+  - Interpretação: Retorno excepcional sobre o patrimônio, embora possa indicar alto risco ou alavancagem.
+
+- **ROA (Retorno sobre Ativos)**:
+  - Fórmula: Lucro Líquido / Ativo Total
+  - Cálculo: 361.147,00 / 468.258,07 = 77,1%
+  - Interpretação: Rentabilidade sobre os ativos também muito alta, sugerindo grande eficácia no uso dos ativos.
+
+### Endividamento
+- **Índice de Endividamento sobre o Ativo**:
+  - Fórmula: Passivo Total / Ativo Total 
+  - Cálculo: 468.258,07 / 468.258,07 = 100%
+  - Interpretação: Toda a estrutura de capital é financiada por endividamento, o que pode ser altamente arriscado.
+
+## Pontos de Atenção e Riscos
+
+- **Alta dependência de fontes externas de capital**, como indicado pelo índice de endividamento de 100%.
+- **Liquidez geral muito baixa** (0,45), indicando possível dificuldade em honrar compromissos de curto prazo.
+- **Elevadas taxas de rentabilidade (ROE e ROA)** que, embora positivas, devem ser analisadas com cautela para verificar sustentabilidade e riscos associados.
+
+## Parecer Técnico
+
+### Contexto
+A Milanezi & Rodrigues LTDA apresenta indicadores de rentabilidade excepcionais para o ano de 2024. No entanto, a análise dos indicadores de liquidez e endividamento trazem preocupações substanciais quanto à vulnerabilidade da empresa a choques financeiros e sua dependência de financiamento externo.
+
+### Recomendações
+1. **Revisar Estratégias de Financiamento**: Há necessidade urgente de reavaliar as fontes de capital para reduzir a dependência de dívidas.
+2. **Melhorar a Gestão de Liquidez**: Implementar esforços para aumentar os ativos circulantes ou renegociar os termos das obrigações correntes.
+3. **Avaliação de Riscos de Rentabilidade**: Investigar a sustentabilidade das elevadas taxas de ROE e ROA.
+
+## Conteúdo da Apresentação PowerPoint
+
+- **Título**: Análise Financeira 2024 - Milanezi & Rodrigues LTDA
+- **Sumário**
+  1. Introdução
+  2. Indicadores de Liquidez
+  3. Eficiência Operacional
+  4. Rentabilidade
+  5. Endividamento
+  6. Riscos e Recomendações
+  7. Parecer Técnico
+- **Slides de Indicadores**: Tabelas distribuídas nos slides conforme os tópicos do sumário.
+- **Gráficos Sugeridos**:
+  1. Gráfico de barras para Liquidez Corrente e Seca (2024)
+  2. Gráfico de linha para evolução do ROE e ROA (2022-2024)
+  3. Gráfico de pizza para composição do Passivo (2024)
+- **Slide de Parecer Técnico**: Detalhamento do parecer com contexto e recomendações.
+- **Slides Adicionais**: Detalhes sobre cada ponto de risco identificado com sugestões específicas.
+
+Esta apresentação ajudará a visualizar os pontos chave da análise e direcionar as discussões para melhorias e estratégias futuras.
